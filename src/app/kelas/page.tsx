@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { BookOpen, CheckCircle, Volume2, Music } from 'lucide-react';
 import DocIconSvg from '@/components/kelas/doc_icon_svg';
 import { levelData, Level } from '@/data/data_level';
+import {useStartExercise} from '@/hooks/useStartExercise';
 
 const levelButtons: Array<{ id: Level; label: string }> = [
   { id: 'awal', label: 'Tahap Awal' },
@@ -13,8 +14,9 @@ const levelButtons: Array<{ id: Level; label: string }> = [
 ];
 
 export default function Home() {
-  const [activeLevel, setActiveLevel] = useState<Level>('awal');
+  const [activeLevel, setActiveLevel] = useState<Level>('dasar');
   const current = levelData[activeLevel];
+  const { startExercise, loading } = useStartExercise();
   const IconComponent = current.icon;
 
   return (
@@ -109,8 +111,10 @@ export default function Home() {
                 </ul>
               </div>
 
-              <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition-colors duration-200">
-                Mulai Latihan Yuk
+              <button 
+              onClick={() => startExercise(activeLevel)}
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition-colors duration-200">
+                {loading ? "Loading..." : "Mulai Latihan Yuk"}
               </button>
             </div>
           </div>
