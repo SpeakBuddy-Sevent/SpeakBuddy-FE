@@ -9,11 +9,9 @@ export default function Home() {
     <>
     {/* <Login/>
     <Register /> */}
-      <Navbar />
       <main>
         <Hero/>
       </main>
-      <Footer />
     </>
   );
 }
