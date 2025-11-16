@@ -22,7 +22,7 @@ export default function Navbar() {
                 href="/"
                 onClick={() => setActiveMenu("beranda")}
                 className={`text-white font-medium px-4 py-2 rounded-md transition-all relative ${
-                  activeMenu === "beranda" ? "bg-white/10" : "hover:bg-white/10"
+                  activeMenu === "beranda" ? "bg-none" : "hover:bg-white/10"
                 }`}
               >
                 Beranda
@@ -35,7 +35,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setActiveMenu("layanan")}
                   className={`flex items-center text-white font-medium px-4 py-2 rounded-md transition-all relative ${
-                    activeMenu === "layanan" ? "bg-white/10" : "hover:bg-white/10"
+                    activeMenu === "layanan" ? "bg-none" : "hover:bg-white/10"
                   }`}
                 >
                   Layanan
@@ -48,11 +48,11 @@ export default function Navbar() {
                 </button>
                 <div className="absolute left-0 mt-2 w-48 rounded-lg shadow-xl bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="py-2">
-                    <a href="#" onClick={() => setActiveMenu("layanan")} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                      Kelas
+                    <a href="#" onClick={() => setActiveMenu("layanan")} className="block px-4 py-2 text-sm text-black font-bold hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                      Latihan Bicara
                     </a>
-                    <a href="#" onClick={() => setActiveMenu("layanan")} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                      Assessment
+                    <a href="#" onClick={() => setActiveMenu("layanan")} className="block px-4 py-2 text-sm text-black font-bold hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                      Perkembangan Anak
                     </a>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export default function Navbar() {
                 href="#"
                 onClick={() => setActiveMenu("konsultasi")}
                 className={`text-white font-medium px-4 py-2 rounded-md transition-all relative ${
-                  activeMenu === "konsultasi" ? "bg-white/10" : "hover:bg-white/10"
+                  activeMenu === "konsultasi" ? "bg-none" : "hover:bg-white/10"
                 }`}
               >
                 Konsultasi

@@ -16,9 +16,9 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.05)_0%,transparent_50%)]"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-16 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 text-center">
         <h1
-          className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-white mb-6 leading-tight"
+            className="text-7xl md:text-8xl lg:text-9xl xl:text-[5rem] 2xl:text-[5rem] font-extrabold text-white mb-6 leading-tight"
           style={{ textShadow: "1px 1px 8px rgba(0,0,0,0.3)"}}
         >
           Temani Setiap <span className="text-[#FECB08]">Kata</span>
@@ -26,7 +26,7 @@ export const Hero = () => {
           Pertama <span className="text-[#FECB08]">Anak</span> dengan Ceria
         </h1>
 
-        <p className="text-lg md:text-xl text-white mb-10 max-w-2xl mx-auto ">
+        <p className="text-2xl text-white mb-10 max-w-4xl mx-auto ">
           Platform interaktif yang membantu anak berlatih berbicara lewat
           permainan, suara, dan interaksi menyenangkan.
         </p>

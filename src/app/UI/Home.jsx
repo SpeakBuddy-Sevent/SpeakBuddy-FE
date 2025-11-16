@@ -1,11 +1,11 @@
 export default function Home() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-16 space-y-20 ">
+    <main className="mx-auto max-w-6xl px-4 py-25 space-y-20 ">
       <section className="text-center space-y-4">
-        <h2 className="text-5xl font-bold pt-7">
+        <h2 className="text-[2.6rem] font-bold pt-7">
           Fitur <span className="text-blue-600">SpeakBuddy</span>
         </h2>
-        <p className="text-black text-2xl max-w-2xl mx-auto">
+        <p className="text-black text-2xl max-w-3xl  mx-auto">
           Mendukung perkembangan bicara Si Kecil dengan fitur yang mudah
           digunakan dan ramah anak.
         </p>
@@ -58,24 +58,24 @@ export default function Home() {
           />
         </div>
         <div>
-          <h2 className="text-4xl font-bold">
+          <h2 className="text-[2.6rem] font-black ">
             Mengenal <span className="text-blue-600">SpeechDelay</span>
           </h2>
-          <p className="text-black mt-3 text-xl">
+          <p className="text-black mt-5 text-[1.4rem]">
             Speech delay adalah kondisi ketika perkembangan bicara anak berjalan
             lebih lambat dibandingkan usia sebayanya. Mengenal tanda-tandanya
             sejak dini sangat penting agar orang tua dapat memberikan dukungan
             optimal.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-            <div className="p-2 rounded-xl border text-center flex items-center justify-center h-20 w-full border-gray-500 bg-[#F5F5F5] text-black">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+            <div className="p-5 rounded-xl border text-left flex items-center justify-center h-20 w-full border-gray-500 bg-[#F5F5F5] font-bold text-black">
               Anak jarang mengoceh atau meniru suara
             </div>
 
-            <div className="p-2 rounded-xl border text-center flex items-center justify-center h-20 w-full border-gray-500   bg-[#F5F5F5] text-black">
+            <div className="p-5 rounded-xl border text-left flex items-center justify-center h-20 w-full border-gray-500 bg-[#F5F5F5] font-bold text-black">
               Belum mengucapkan kata sederhana di usia 18+ bulan
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -89,14 +89,17 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
           <div
             className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer"
-            style={{
-              backgroundImage: `url(/BgHomebawah.svg)`,
-              backgroundSize: "100%",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
           >
-            <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-90 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div 
+              className="absolute inset-0 opacity-100 group-hover:opacity-31 transition-opacity duration-300"
+              style={{
+                backgroundImage: `url(/BgHomebawah.svg)`,
+                backgroundSize: "100%",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
             <div className="relative z-10">
               <h3 className="text-xl font-semibold text-[#A0A0A0] max-w-[70%] pt-3 transition-colors duration-300 group-hover:text-white">
                 Latihan yang bisa dilakukan dimana dan kapan saja
@@ -106,14 +109,17 @@ export default function Home() {
           
           <div
             className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer"
-            style={{
-              backgroundImage: `url(/BgHomebawah1.svg)`,
-              backgroundSize: "100%",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
           >
-            <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-90 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div 
+              className="absolute inset-0 opacity-100 group-hover:opacity-31 transition-opacity duration-300"
+              style={{
+                backgroundImage: `url(/BgHomebawah.svg)`,
+                backgroundSize: "100%",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
             <div className="relative z-10">
               <h3 className="text-xl font-semibold text-[#A0A0A0] max-w-[70%] pt-3 transition-colors duration-300 group-hover:text-white">
                 Belajar jadi lebih interaktif dan menyenangkan
@@ -123,14 +129,17 @@ export default function Home() {
           
           <div
             className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer"
-            style={{
-              backgroundImage: `url(/BgHomebawah1.svg)`,
-              backgroundSize: "100%",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
           >
-            <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-90 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div 
+              className="absolute inset-0 opacity-100 group-hover:opacity-31 transition-opacity duration-300"
+              style={{
+                backgroundImage: `url(/BgHomebawah.svg)`,
+                backgroundSize: "100%",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
             <div className="relative z-10">
               <h3 className="text-xl font-semibold text-[#A0A0A0] max-w-[70%] pt-3 transition-colors duration-300 group-hover:text-white">
                 Pantau perkembangan dengan mudah
@@ -140,14 +149,17 @@ export default function Home() {
           
           <div
             className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer"
-            style={{
-              backgroundImage: `url(/BgHomebawah1.svg)`,
-              backgroundSize: "100%",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
           >
-            <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-90 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div 
+              className="absolute inset-0 opacity-100 group-hover:opacity-31 transition-opacity duration-300"
+              style={{
+                backgroundImage: `url(/BgHomebawah.svg)`,
+                backgroundSize: "100%",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
             <div className="relative z-10">
               <h3 className="text-xl font-semibold text-[#A0A0A0] max-w-[70%] pt-3 transition-colors duration-300 group-hover:text-white">
                 Terhubung langsung dengan terapis profesional

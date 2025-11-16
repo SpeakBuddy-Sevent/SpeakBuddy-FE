@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="flex flex-wrap gap-8 justify-between">
             
             {/* KOLOM KIRI */}
-            <div className="w-full xl:w-1/4">
+            <div className="w-full xl:w-1/3">
               <a href="/" className="block w-56 mb-6">
                 <img 
                   src="/LogoSpeakBuddy.svg"
@@ -17,11 +17,11 @@ export default function Footer() {
                 />
               </a>
 
-              <p className="text-justify font-bold mb-2">
+              <p className="text-justify text-[1.1rem]  max-w-3xl font-bold mb-2">
                 Tempat belajar bicara yang menyenangkan untuk si kecil.
               </p>
 
-              <p className="text-justify leading-relaxed">
+              <p className="text-justify leading-relaxed max-w-full">
                 Temani setiap kata pertama anak dengan cara yang seru, aman, dan penuh dukungan.
               </p>
             </div>

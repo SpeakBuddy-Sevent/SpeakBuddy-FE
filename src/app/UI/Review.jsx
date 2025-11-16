@@ -3,14 +3,41 @@ import { useRef } from 'react';
 
 export default function Review() {
   const scrollerRef = useRef(null);
-  const scrollByAmount = 340;
+  const scrollByAmount = 360; // Sedikit lebih besar dari width card (340px)
+  
+  // Animasi scroll smooth dengan easing
+  const animateScrollTo = (el, to, duration = 500) => {
+    if (!el) return;
+    const start = el.scrollLeft;
+    const change = to - start;
+    const startTime = performance.now();
+
+    // Easing function: easeInOutQuad untuk transisi lebih smooth
+    const ease = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      el.scrollLeft = start + change * ease(progress);
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
   
   const scrollLeft = () => {
-    scrollerRef.current?.scrollBy({ left: -scrollByAmount, behavior: 'smooth' });
+    const el = scrollerRef.current;
+    if (!el) return;
+    const target = Math.max(0, el.scrollLeft - scrollByAmount);
+    animateScrollTo(el, target, 500);
   };
   
   const scrollRight = () => {
-    scrollerRef.current?.scrollBy({ left: scrollByAmount, behavior: 'smooth' });
+    const el = scrollerRef.current;
+    if (!el) return;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const target = Math.min(maxScroll, el.scrollLeft + scrollByAmount);
+    animateScrollTo(el, target, 500);
   };
 
   const reviews = [
@@ -50,10 +77,10 @@ export default function Review() {
     <section className="bg-[#096CF6] py-20">
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-[2.6 rem] md:text-4xl font-bold text-white mb-4">
             Pengalaman Mereka Belajar di SpeakBuddy
           </h2>
-          <p className="text-white/90 text-base max-w-lg mx-auto">
+          <p className="text-white/90 text-[1.4rem] max-w-2xl mx-auto">
             Cerita dari para orang tua yang melihat perkembangan bicara anaknya sedikit demi sedikit, setiap hari.
           </p>
         </div>
@@ -84,13 +111,17 @@ export default function Review() {
           {/* Cards Container */}
           <div 
             ref={scrollerRef} 
-            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-2 py-4 scrollbar-hide"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex gap-6 overflow-x-auto px-2 py-4 scrollbar-hide"
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none',
+              scrollSnapType: 'none' // Disable snap untuk scroll yang lebih smooth
+            }}
           >
             {reviews.map((review, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-3xl p-8 w-[320px] md:w-[340px] shrink-0 snap-start shadow-xl hover:shadow-2xl transition-shadow"
+                className="bg-white rounded-3xl p-8 w-[320px] md:w-[340px] shrink-0 shadow-xl hover:shadow-2xl transition-shadow"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="h-14 w-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xl font-bold shadow-md">
