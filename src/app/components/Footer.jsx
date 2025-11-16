@@ -2,7 +2,8 @@ export default function Footer() {
   return (
     <footer>
       {/* BAGIAN UTAMA */}
-      <div className="bg-[#054194] py-8 text-white">
+    <div className="bg-[#054194] pt-16 pb-6 text-white">
+
         <div className="mx-auto max-w-6xl px-2">
           <div className="flex flex-wrap gap-8 justify-between">
             
@@ -27,10 +28,10 @@ export default function Footer() {
 
             {/* KOLOM TENGAH */}
             <div>
-              <h2 className="text-2xl pb-2 mb-3 border-b-4 border-blue-300 inline-block">
+              <h2 className="text-2xl pb-2 mb-3 ">
                 Company
               </h2>
-              <ul className="leading-7">
+              <ul className="space-y-2 leading-7">
                 <li><a href="#" className="hover:text-blue-300">Tentang Kami</a></li>
                 <li><a href="#" className="hover:text-blue-300">Hubungi Kami</a></li>
                 <li><a href="#" className="hover:text-blue-300">Kebijakan Privasi</a></li>
@@ -40,10 +41,10 @@ export default function Footer() {
 
             {/* KOLOM KANAN */}
             <div>
-              <h2 className="text-2xl pb-2 mb-3 border-b-4 border-blue-300 inline-block">
+              <h2 className="text-2xl pb-2 mb-3">
                 Social Media
               </h2>
-              <ul className="leading-7">
+              <ul className="space-y-2 leading-7">
                 <li><a href="#" className="hover:text-blue-300">Instagram</a></li>
                 <li><a href="#" className="hover:text-blue-300">Facebook</a></li>
                 <li><a href="#" className="hover:text-blue-300">Youtube</a></li>
