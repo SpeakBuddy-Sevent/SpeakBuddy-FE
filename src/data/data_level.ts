@@ -6,7 +6,7 @@ export const levelData: Record<Level, LevelData> = {
   awal: {
     title: 'Tahap Awal',
     description: 'Untuk pemula yang baru mengenal kosa kata dasar',
-    info: 'Pada tahap ini, anak akan diajak untuk mengenali dan meninirukan suara-suara yang mudah didengar. Tahap ini dirancang untuk membangun kepercayaan diri dan kemampuan mendengar kalimat yang berhubungan dengan pengalaman sehari-hari.',
+    info: 'Pada tahap ini, anak diajak untuk mengenali dan meniru berbagai bunyi dasar sebagai fondasi kemampuan berbicara. Fokus latihan mencakup vokal, konsonan sederhana, dan suara-suara yang mudah diikuti. Tahap ini dirancang untuk membantu anak membangun keberanian mengeluarkan suara serta melatih koordinasi lidah, mulut, dan napas.',
     materials: [
       'Vokal dasar (A-I-U-E-O)',
       'Konsonan sederhana (M, B, P, S, K)',
@@ -26,7 +26,7 @@ export const levelData: Record<Level, LevelData> = {
   dasar: {
     title: 'Tahap Dasar',
     description: 'Untuk mereka yang sudah menguasai bunyi dasar',
-    info: 'Tahap ini fokus pada pengembangan kemampuan berbicara dengan suku kata sederhana dan pola vokal-konsonan yang konsisten. Anak akan belajar menggabungkan suara untuk membentuk kata-kata.',
+    info: 'Pada tahap dasar, anak mulai diperkenalkan dengan kosakata sehari-hari yang mudah dikenali. Latihan difokuskan pada menyebutkan kata benda, kata kerja sederhana, serta objek yang familiar. Tujuannya adalah membangun pengucapan yang lebih jelas dan membantu anak menghubungkan kata dengan makna.',
     materials: [
       'Suku kata sederhana (ma, ba, pa, ta)',
       'Kata dua suku (mama, papa, bapak)',
@@ -46,7 +46,7 @@ export const levelData: Record<Level, LevelData> = {
   menengah: {
     title: 'Tahap Menengah',
     description: 'Untuk mereka yang sudah siap ke level yang lebih kompleks',
-    info: 'Fase ini mengembangkan kemampuan berbicara dengan kalimat pendek dan frasa. Anak akan belajar mengekspresikan kebutuhan dan perasaan dengan lebih jelas.',
+    info: 'Pada tahap menengah, anak mulai belajar menyusun kata menjadi kalimat sederhana. Latihan membantu anak mengembangkan kemampuan berbahasa yang lebih terstruktur, seperti menyebutkan kebutuhan, menjawab pertanyaan pendek, dan mengulangi kalimat yang diberikan. Ini menjadi jembatan penting menuju komunikasi yang lebih lancar.',
     materials: [
       'Frasa dua kata (mama makan, papa tidur)',
       'Nada dan intonasi yang lebih variatif',
