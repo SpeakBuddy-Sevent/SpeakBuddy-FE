@@ -15,7 +15,8 @@ import HomeKonsul from "./UI/Konsultasi/HomeKonsul";
 export default function Home() {
   return (
     <>
-      <Navbar />
+    {/* <Login/>
+    <Register /> */}
       <main>
         {/* <Hero/>
         <HomePage/>
@@ -26,7 +27,6 @@ export default function Home() {
         {/* <HeroKonsul />
         <HomeKonsul /> */}
       </main>
-      <Footer /> 
     </>
   );
 }
