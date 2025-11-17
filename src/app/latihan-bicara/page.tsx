@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { BookOpen, CheckCircle, Volume2, Music } from 'lucide-react';
-import DocIconSvg from '@/components/kelas/doc_icon_svg';
+import DocIconSvg from '@/components/latihan-bicara/doc_icon_svg';
 import { levelData, Level } from '@/data/data_level';
 import {useStartExercise} from '@/hooks/useStartExercise';
 

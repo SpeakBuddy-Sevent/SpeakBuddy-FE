@@ -1,4 +1,4 @@
-import DocIconSvg from "@/components/kelas/doc_icon_svg";
+import DocIconSvg from "@/components/latihan-bicara/doc_icon_svg";
 
 export type Level = 'awal' | 'dasar' | 'menengah' | 'lanjut';
 
