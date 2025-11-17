@@ -22,7 +22,7 @@ export default function Home() {
         <HomePage/>
         <ReviewPage/>
         <FAQ/> */}
-        <Profile />
+        <HomePage/>
         {/* <ProfileEdit /> */}
         {/* <HeroKonsul />
         <HomeKonsul /> */}

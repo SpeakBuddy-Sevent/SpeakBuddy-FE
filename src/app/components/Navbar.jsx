@@ -48,7 +48,7 @@ export default function Navbar() {
                 </button>
                 <div className="absolute left-0 mt-2 w-48 rounded-lg shadow-xl bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="py-2">
-                    <a href="#" onClick={() => setActiveMenu("layanan")} className="block px-4 py-2 text-sm text-black font-bold hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <a href="/latihan-bicara" onClick={() => setActiveMenu("layanan")} className="block px-4 py-2 text-sm text-black font-bold hover:bg-blue-50 hover:text-blue-600 transition-colors">
                       Latihan Bicara
                     </a>
                     <a href="#" onClick={() => setActiveMenu("layanan")} className="block px-4 py-2 text-sm text-black font-bold hover:bg-blue-50 hover:text-blue-600 transition-colors">
@@ -75,7 +75,7 @@ export default function Navbar() {
 
           {/* Right: Login button */}
           <div className="flex items-center gap-3">
-            <Link href="/register" className="px-8 py-2 bg-[#FECB08] text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg">
+            <Link href="/auth/register" className="px-8 py-2 bg-[#FECB08] text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg">
               Masuk
             </Link>
           </div>

@@ -40,7 +40,7 @@ export const useStartExercise = () => {
 
       const data = res.data;
 
-      router.push(`/kelas/${data.level}`);
+      router.push(`/latihan-bicara/${data.level}`);
     } catch (error: any) {
       console.error(error);
 
