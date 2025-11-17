@@ -1,12 +1,12 @@
 'use client';
 import { useState } from 'react';
-// import Register from "../../components/Register";
+
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   return (
-    <div className="bg-blue-600 flex items-center justify-center min-h-screen p-4">
+    <div className="bg-[#096CF6] flex items-center justify-center min-h-[80vh] p-4">
       <div className="bg-white rounded-3xl shadow-xl max-w-md w-full p-6">
         <div className="flex items-center mb-8">
           <button className="text-gray-800">
