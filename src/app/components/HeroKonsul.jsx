@@ -1,3 +1,5 @@
+import { Hero } from "@/app/components/Hero";
+
 export const HeroKonsul = () => {
   return (
     <div className="relative py-5 md:py-7 flex items-center justify-center overflow-hidden bg-linear-to-r from-[#096CF6] to-[#096CF6]">
