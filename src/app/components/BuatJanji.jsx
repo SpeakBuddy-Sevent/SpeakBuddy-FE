@@ -1,32 +1,26 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 
-export default function ProfileEdit() {
-  const [isPhoneEditable, setIsPhoneEditable] = useState(false);
-  const [isEmailEditable, setIsEmailEditable] = useState(false);
-
-  const phoneInputRef = useRef(null);
-  const emailInputRef = useRef(null);
-
-  const handlePhoneEdit = () => {
-    setIsPhoneEditable(true);
-    setTimeout(() => phoneInputRef.current?.focus(), 0);
-  };
-
-  const handleEmailEdit = () => {
-    setIsEmailEditable(true);
-    setTimeout(() => emailInputRef.current?.focus(), 0);
-  };
-
+export default function BuatJanji() {
+  const router = useRouter();
+  const slots = ["09:00-10:00", "10:00-11.00", "11:00-12.00", "13:00-14.00"];
+  const [selectedSlot, setSelectedSlot] = useState(null);
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
-      <div className="grid grid-cols-2 
-            lg:grid-cols-4 gap-6">
+      <div
+        className="grid grid-cols-2 
+            lg:grid-cols-4 gap-6"
+      >
         <aside className="space-y-4">
           <div className="rounded-2xl bg-[#096CF6] text-white p-6 shadow-sm relative overflow-hidden bg-[url('/BgProfile1.svg')] bg-cover bg-right bg-no-repeat">
-              <img src="/LogoSpeakBuddy.svg" className="h-[0.895rem] w-auto mb-2" alt="SpeakBuddy" />
-            <p className="text-xl font-bold">Pusat Akun</p>
+            <img
+              src="/LogoSpeakBuddy.svg"
+              className="h-[0.895rem] w-auto mb-2"
+              alt="SpeakBuddy"
+            />
+            <p className="text-xl font-bold">Konsultasi</p>
           </div>
         </aside>
 
@@ -46,12 +40,11 @@ export default function ProfileEdit() {
             </svg>
             <span>Kembali</span>
           </div>
-          <h2 className="text-2xl font-bold text-black">Pusat Akun</h2>
-
-          {/* Info Pemilik Akun */}
+          <h3 className="text-2xl font-bold text-gray-900">Buat Janji</h3>
+          {/* Card Atas */}
           <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6">
-            <div className="flex items-center justify-between px-6 py-4">
-              <p className="text-xl font-bold text-black">Info Pemilik Akun</p>
+            <div className="flex items-center justify-between px-6 py-2">
+              <p className="text-xl font-bold text-black">Data Pasien</p>
             </div>
 
             <div className="px-6 py-6 space-y-5">
@@ -85,9 +78,8 @@ export default function ProfileEdit() {
                   <input
                     type="date"
                     className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-             
                   />
-                  
+
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="absolute right-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400 pointer-events-none"
@@ -124,77 +116,67 @@ export default function ProfileEdit() {
             </div>
           </div>
 
-          {/* Nomor HP dan Email */}
+          {/* Card Bawah - Jadwal Konsultasi */}
+
           <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6">
-            <div className="flex items-center justify-between px-6 py-4">
-              <p className="text-xl font-bold text-black">Nomor HP dan Email</p>
+            <div className="flex items-center justify-between px-6 py-2">
+              <p className="text-xl font-bold text-black">Jadwal Konsultasi</p>
             </div>
 
             <div className="px-6 py-6 space-y-5">
               <div>
-                <div className="text-black font-bold mb-3">Nomor HP</div>
+                <div className="text-black font-medium mb-3">
+                  Tanggal Konsultasi
+                </div>
                 <div className="relative">
                   <input
-                    ref={phoneInputRef}
-                    type="text"
-                    defaultValue="+62 85810393050"
-                    disabled={!isPhoneEditable}
-                    className={`w-full px-4 py-3 pr-20 border border-gray-300 rounded-xl text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${
-                      !isPhoneEditable ? "bg-white" : "bg-white"
-                    }`}
+                    type="date"
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus:border-blue-500"
                   />
-                  {!isPhoneEditable ? (
-                    <button
-                      onClick={handlePhoneEdit}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#096CF6] font-medium hover:text-blue-700 transition-colors"
+                  <span className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
                     >
-                      Ubah
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => setIsPhoneEditable(false)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-green-600 font-medium hover:text-green-700 transition-colors"
-                    >
-                      Simpan
-                    </button>
-                  )}
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <path d="M16 2v4M8 2v4M3 10h18" />
+                    </svg>
+                  </span>
                 </div>
               </div>
 
               <div>
-                <div className="text-black font-bold mb-3">Email</div>
-                <div className="relative">
-                  <input
-                    ref={emailInputRef}
-                    type="email"
-                    defaultValue="ayularasati@gmail.com"
-                    disabled={!isEmailEditable}
-                    className={`w-full px-4 py-3 pr-20 border border-gray-300 rounded-xl text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${
-                      !isEmailEditable ? "bg-white" : "bg-white"
-                    }`}
-                  />
-                  {!isEmailEditable ? (
+                <div className="text-black font-medium mb-3">
+                  Jam Konsultasi
+                </div>
+                <div className="flex flex-wrap gap-3 ">
+                  {slots.map((s) => (
                     <button
-                      onClick={handleEmailEdit}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#096CF6] font-medium hover:text-blue-700 transition-colors"
+                      key={s}
+                      onClick={() => setSelectedSlot(s)}
+                      type="button"
+                      className={`px-6 py-4 rounded-xl border transition-colors text-base ${
+                        selectedSlot === s
+                          ? "bg-[#096CF6] text-white border-[#096CF6]"
+                          : "bg-gray-50 text-gray-600 border-gray-200"
+                      }`}
                     >
-                      Ubah
+                      {s}
                     </button>
-                  ) : (
-                    <button
-                      onClick={() => setIsEmailEditable(false)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-green-600 font-medium hover:text-green-700 transition-colors"
-                    >
-                      Simpan
-                    </button>
-                  )}
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-          <h2 className="text-lg font-bold text-center text-red-600 cursor-pointer">
-            Hapus Akun
-          </h2>
+          <div className="mt-4">
+            <button className="w-full bg-[#096CF6] text-white px-6 py-4 rounded-xl text-xl font-semibold">
+              Selanjutnya
+            </button>
+          </div>
         </section>
       </div>
     </main>
