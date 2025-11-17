@@ -2,12 +2,13 @@ export default function Footer() {
   return (
     <footer>
       {/* BAGIAN UTAMA */}
-      <div className="bg-[#054194] py-8 text-white">
+    <div className="bg-[#054194] pt-16 pb-6 text-white">
+
         <div className="mx-auto max-w-6xl px-2">
           <div className="flex flex-wrap gap-8 justify-between">
             
             {/* KOLOM KIRI */}
-            <div className="w-full xl:w-1/4">
+            <div className="w-full xl:w-1/3">
               <a href="/" className="block w-56 mb-6">
                 <img 
                   src="/LogoSpeakBuddy.svg"
@@ -16,21 +17,21 @@ export default function Footer() {
                 />
               </a>
 
-              <p className="text-justify font-bold mb-2">
+              <p className="text-justify text-[1.1rem]  max-w-3xl font-bold mb-2">
                 Tempat belajar bicara yang menyenangkan untuk si kecil.
               </p>
 
-              <p className="text-justify leading-relaxed">
+              <p className="text-justify leading-relaxed max-w-full">
                 Temani setiap kata pertama anak dengan cara yang seru, aman, dan penuh dukungan.
               </p>
             </div>
 
             {/* KOLOM TENGAH */}
             <div>
-              <h2 className="text-2xl pb-2 mb-3 border-b-4 border-blue-300 inline-block">
+              <h2 className="text-2xl pb-2 mb-3 ">
                 Company
               </h2>
-              <ul className="leading-7">
+              <ul className="space-y-2 leading-7">
                 <li><a href="#" className="hover:text-blue-300">Tentang Kami</a></li>
                 <li><a href="#" className="hover:text-blue-300">Hubungi Kami</a></li>
                 <li><a href="#" className="hover:text-blue-300">Kebijakan Privasi</a></li>
@@ -40,10 +41,10 @@ export default function Footer() {
 
             {/* KOLOM KANAN */}
             <div>
-              <h2 className="text-2xl pb-2 mb-3 border-b-4 border-blue-300 inline-block">
+              <h2 className="text-2xl pb-2 mb-3">
                 Social Media
               </h2>
-              <ul className="leading-7">
+              <ul className="space-y-2 leading-7">
                 <li><a href="#" className="hover:text-blue-300">Instagram</a></li>
                 <li><a href="#" className="hover:text-blue-300">Facebook</a></li>
                 <li><a href="#" className="hover:text-blue-300">Youtube</a></li>
