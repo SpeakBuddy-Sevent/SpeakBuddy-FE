@@ -142,7 +142,7 @@ export default function HomeKonsul() {
                   </div>
                 </div>
                 <Link
-                  href="#"
+                  href="/Konsultasi/BuatJanji"
                   className="px-6 py-2 bg-[#096CF6] text-white rounded-full font-semibold text-sm hover:bg-blue-700 transition-colors whitespace-nowrap"
                 >
                   Konsul

@@ -1,26 +1,29 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
   return (
     <div className="bg-[#096CF6] flex items-center justify-center min-h-[80vh] p-4">
       <div className="bg-white rounded-3xl shadow-xl max-w-md w-full p-6">
-        <div className="flex items-center mb-8">
-          <button className="text-gray-800">
-            <svg
+        <div className="flex items-center mb-2">
+         <button onClick={() => router.back('/auth')} className="group flex items-center text-black hover:text-[#096CF6] transition-colors duration-200 mb-6">
+             <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
+              className="transition-colors duration-200"
             >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-          </button>
-          <span className="ml-4 text-lg font-medium text-black">Kembali</span>
+          <span className="ml-2 text-base font-medium transition-colors duration-200">Kembali</span>
+        </button>
         </div>
 
         <h2 className="text-3xl font-bold mb-8 text-black">Login</h2>
