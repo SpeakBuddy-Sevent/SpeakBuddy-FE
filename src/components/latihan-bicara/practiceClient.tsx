@@ -79,7 +79,7 @@ export default function PracticeClient({ level }: { level: string }) {
     // Simpan result dari API
     setAttemptResult(result);
 
-    const Score = result?.score ?? Math.floor(60 + Math.random() * 35);
+    const Score = result?.accuracy ?? result?.score ?? 0;
 
     setScore(Score);
     setStep("result");
@@ -247,7 +247,7 @@ export default function PracticeClient({ level }: { level: string }) {
 
                 {/* Score */}
                 <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-md p-8">
-                  <div className="relative mx-auto">
+                  <div className="relative mx-auto items-center justify-center">
                     <div
                       className="w-40 h-40 rounded-full flex items-center justify-center"
                       style={{
