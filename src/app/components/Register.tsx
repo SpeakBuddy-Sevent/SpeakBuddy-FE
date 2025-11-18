@@ -39,7 +39,7 @@ export default function Register() {
       <div className="bg-white rounded-3xl shadow-xl max-w-md w-full p-6">
         <div className="flex items-center mb-2">
           <button
-            onClick={() => router.back()}
+            onClick={() => router.push('/auth')}
             className="group flex items-center text-black hover:text-[#096CF6] transition-colors duration-200 mb-6"
           >
              <svg
