@@ -9,11 +9,8 @@ export default function BuatJanji() {
   const [selectedSlot, setSelectedSlot] = useState(null);
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
-      <div
-        className="grid grid-cols-2 
-            lg:grid-cols-4 gap-6"
-      >
-        <aside className="space-y-4">
+      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
+        <aside className="w-full lg:w-[280px] shrink-0">
           <div className="rounded-2xl bg-[#096CF6] text-white p-6 shadow-sm relative overflow-hidden bg-[url('/BgProfile1.svg')] bg-cover bg-right bg-no-repeat">
             <img
               src="/LogoSpeakBuddy.svg"
@@ -24,7 +21,7 @@ export default function BuatJanji() {
           </div>
         </aside>
 
-        <section className="lg:col-span-3 space-y-5">
+        <section className="flex-1 space-y-4 sm:space-y-5">
           <div
             onClick={() => router.back()}
             className="flex items-center gap-2 text-lg font-bold text-black cursor-pointer hover:text-blue-600 transition-colors"
@@ -172,10 +169,13 @@ export default function BuatJanji() {
               </div>
             </div>
           </div>
-          <div className="mt-4">
-            <button className="w-full bg-[#096CF6] text-white px-6 py-4 rounded-xl text-xl font-semibold">
+          <div className="mt-4 w-full">
+            <Link
+              href="/Konsultasi/BuatJanji/Bayar"
+              className="block w-full bg-[#096CF6] text-white px-6 py-4 rounded-xl text-xl font-semibold text-center hover:bg-blue-700 transition-colors"
+            >
               Selanjutnya
-            </button>
+            </Link>
           </div>
         </section>
       </div>

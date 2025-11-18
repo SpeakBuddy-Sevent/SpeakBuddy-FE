@@ -1,3 +1,5 @@
+"use client";
+
 export default function Home() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-25 space-y-20 ">
@@ -9,12 +11,13 @@ export default function Home() {
           Mendukung perkembangan bicara Si Kecil dengan fitur yang mudah
           digunakan dan ramah anak.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-5 mt-8">
-          <div className="group rounded-2xl border border-gray-200 bg-gray-100 p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE]">
-            <div className="h-20 w-20 rounded-xl bg-gray-400 mx-auto mb-5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#096CF6]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-5 mt-8">
+          {/* Card 1 - Latihan Bicara */}
+          <div className="group rounded-2xl border border-gray-200 bg-gray-100 md:bg-gray-100 bg-[#E6F0FE] p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE] animate-fade-in">
+            <div className="h-20 w-20 rounded-xl bg-gray-400 md:bg-gray-400 bg-[#096CF6] mx-auto mb-5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#096CF6]">
               <img className="h-12 w-12" src="/mic_home.svg" alt="mic" />
             </div>
-            <h3 className="text-xl font-bold text-gray-600 transition-colors duration-300 group-hover:text-[#096CF6]">
+            <h3 className="text-xl font-bold text-gray-600 md:text-gray-600 text-[#096CF6] transition-colors duration-300 group-hover:text-[#096CF6]">
               Latihan Bicara
             </h3>
             <p className="text-base text-black mt-2 leading-relaxed max-w-[280px] mx-auto">
@@ -23,22 +26,25 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="group rounded-2xl border border-gray-200 bg-gray-100 p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE]">
-            <div className="h-20 w-20 rounded-xl bg-gray-400 mx-auto mb-5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#096CF6]">
+          {/* Card 2 - Perkembangan Anak */}
+          {/* <div className="group rounded-2xl border border-gray-200 bg-gray-100 md:bg-gray-100 bg-[#E6F0FE] p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE] animate-fade-in animation-delay-100">
+            <div className="h-20 w-20 rounded-xl bg-gray-400 md:bg-gray-400 bg-[#096CF6] mx-auto mb-5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#096CF6]">
               <img className="h-10 w-10" src="/chart.svg" alt="chart" />
             </div>
-            <h3 className="text-xl font-bold text-gray-600 transition-colors duration-300 group-hover:text-[#096CF6]">
+            <h3 className="text-xl font-bold text-gray-600 md:text-gray-600 text-[#096CF6] transition-colors duration-300 group-hover:text-[#096CF6]">
               Perkembangan Anak
             </h3>
             <p className="text-base text-black mt-2 leading-relaxed max-w-[280px] mx-auto">
               Pantau perkembangan bicara Si Kecil setiap harinya.
             </p>
-          </div>
-          <div className="group rounded-2xl border border-gray-200 bg-gray-100 p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE]">
-            <div className="h-20 w-20 rounded-xl bg-gray-400 mx-auto mb-5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#096CF6]">
+          </div> */}
+
+          {/* Card 3 - Konsultasi Terapis */}
+          <div className="group rounded-2xl border border-gray-200 bg-gray-100 md:bg-gray-100 bg-[#E6F0FE] p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE] animate-fade-in animation-delay-200">
+            <div className="h-20 w-20 rounded-xl bg-gray-400 md:bg-gray-400 bg-[#096CF6] mx-auto mb-5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#096CF6]">
               <img className="h-12 w-12" src="/konsultan.svg" alt="konsultan" />
             </div>
-            <h3 className="text-xl font-bold text-gray-600 transition-colors duration-300 group-hover:text-[#096CF6]">
+            <h3 className="text-xl font-bold text-gray-600 md:text-gray-600 text-[#096CF6] transition-colors duration-300 group-hover:text-[#096CF6]">
               Konsultasi Terapis
             </h3>
             <p className="text-base text-black mt-2 leading-relaxed max-w-[280px] mx-auto">
@@ -67,19 +73,9 @@ export default function Home() {
             sejak dini sangat penting agar orang tua dapat memberikan dukungan
             optimal.
           </p>
-          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-            <div className="p-5 rounded-xl border text-left flex items-center justify-center h-20 w-full border-gray-500 bg-[#F5F5F5] font-bold text-black">
-              Anak jarang mengoceh atau meniru suara
-            </div>
-
-            <div className="p-5 rounded-xl border text-left flex items-center justify-center h-20 w-full border-gray-500 bg-[#F5F5F5] font-bold text-black">
-              Belum mengucapkan kata sederhana di usia 18+ bulan
-            </div>
-          </div> */}
         </div>
       </section>
 
-      {/* Section Kenapa Harus Belajar */}
       {/* Section Kenapa Harus Belajar */}
       <section className="space-y-6">
         <h2 className="text-3xl font-bold text-center">
@@ -168,6 +164,41 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .animation-delay-100 {
+          animation-delay: 0.1s;
+          opacity: 0;
+        }
+
+        .animation-delay-200 {
+          animation-delay: 0.2s;
+          opacity: 0;
+        }
+
+        @media (min-width: 768px) {
+          .animate-fade-in {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
+        }
+      `}</style>
     </main>
   );
 }
