@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 
-const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api/v1";
 
 export function useExercise() {
   const [levels, setLevels] = useState<any[]>([]);
@@ -25,7 +25,7 @@ export function useExercise() {
 
       const token = getToken();
 
-      const res = await fetch(`${API}/api/v1/exercise/levels`, {
+      const res = await fetch(`${API}/exercise/levels`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,7 +53,7 @@ export function useExercise() {
       const form = new FormData();
       form.append("level", level);
 
-      const res = await fetch(`${API}/api/v1/exercise/start`, {
+      const res = await fetch(`${API}/exercise/start`, {
         method: "POST",
         body: form,
         headers: {
@@ -83,7 +83,7 @@ export function useExercise() {
       const token = getToken();
 
       const res = await fetch(
-        `${API}/api/v1/exercise/${exerciseID}/next-item?current_item_number=${currentItemNumber}`,
+        `${API}/exercise/${exerciseID}/next-item?current_item_number=${currentItemNumber}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -121,7 +121,7 @@ export function useExercise() {
       form.append("item_id", String(itemID));
       form.append("file", blob);
 
-      const res = await fetch(`${API}/api/v1/exercise/record`, {
+      const res = await fetch(`${API}/exercise/record`, {
         method: "POST",
         body: form,
         headers: {

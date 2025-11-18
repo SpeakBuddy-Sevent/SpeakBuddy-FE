@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api/v1";
+
 export default function useRegister() {
   const router = useRouter();
 
@@ -18,7 +20,7 @@ export default function useRegister() {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/register",
+        `${API}/auth/register`,
         {
           name,
           email,
