@@ -54,7 +54,7 @@ export default function Navbar() {
 
               {/* KONSULTASI */}
               <Link
-                href="/Konsultasi"
+                href="/konsultasi"
                 className={`text-white font-medium px-4 py-2 rounded-md relative transition-all ${
                   pathname === "/Konsultasi" ? "" : "hover:bg-white/10"
                 }`}

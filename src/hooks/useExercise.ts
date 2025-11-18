@@ -10,6 +10,7 @@ export function useExercise() {
   const [exerciseId, setExerciseId] = useState<number | null>(null);
   const [currentItem, setCurrentItem] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [attemptResult, setAttemptResult] = useState<any | null>(null);
 
   const getToken = () => {
     if (typeof window === "undefined") return null;
@@ -130,7 +131,18 @@ export function useExercise() {
 
       if (!res.ok) throw new Error(await res.text());
 
-      return await res.json();
+      const data = await res.json();
+
+      setAttemptResult({
+        id: data.id,
+        transcribedText: data.transcribed_text,
+        feedback: data.feedback,
+        accuracy: data.accuracy,
+        model: data.ai_model,
+        createdAt: data.created_at
+      });
+
+      return data;
     } catch (err: any) {
       setError(err.message);
       return null;
@@ -145,6 +157,7 @@ export function useExercise() {
     currentItem,
     loading,
     error,
+    attemptResult,
     loadLevels,
     startExercise,
     nextItem,

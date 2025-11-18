@@ -1,64 +1,75 @@
 'use client';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import useLogin from '@/hooks/useLogin';
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const { login, loading, error } = useLogin();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(email, password);
+  };
+
   return (
     <div className="bg-[#096CF6] flex items-center justify-center min-h-[80vh] p-4">
       <div className="bg-white rounded-3xl shadow-xl max-w-md w-full p-6">
+        
         <div className="flex items-center mb-2">
-         <button onClick={() => router.back('/auth')} className="group flex items-center text-black hover:text-[#096CF6] transition-colors duration-200 mb-6">
-             <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="transition-colors duration-200"
-            >
+          <button 
+            onClick={() => router.push('/auth')} 
+            className="group flex items-center text-black hover:text-[#096CF6] transition-colors duration-200 mb-6"
+          >
+            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-          <span className="ml-2 text-base font-medium transition-colors duration-200">Kembali</span>
-        </button>
+            <span className="ml-2 text-base font-medium">Kembali</span>
+          </button>
         </div>
 
         <h2 className="text-3xl font-bold mb-8 text-black">Login</h2>
 
-        <form>
+        {error && <p className="text-red-600 mb-3">{error}</p>}
+
+        <form onSubmit={handleSubmit}>
+          
           <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-gray-900 text-sm font-semibold mb-2"
-            >
+            <label className="block text-gray-900 text-sm font-semibold mb-2">
               Email
             </label>
             <input
               type="email"
               id="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-700 focus:outline-none focus:border-blue-500"
               placeholder="ayulestari@gmail.com"
+              required
             />
           </div>
 
           <div className="mb-4">
-            <label
-              htmlFor="password"
-              className="block text-gray-900 text-sm font-semibold mb-2"
-            >
+            <label className="block text-gray-900 text-sm font-semibold mb-2">
               Kata Sandi
             </label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-700 focus:outline-none focus:border-blue-500"
                 placeholder="Masukkan Kata Sandi"
                 autoComplete="current-password"
+                required
               />
+
               <button
                 type="button"
                 onClick={() => setShowPassword(v => !v)}
@@ -78,33 +89,19 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="remember"
-                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-              />
-              <label htmlFor="remember" className="ml-2 text-sm text-gray-600">
-                Ingat Saya
-              </label>
-            </div>
-            <a href="#" className="text-sm text-blue-600 hover:underline">
-              Lupa Password?
-            </a>
-          </div>
-
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white px-4 py-3 rounded-xl hover:bg-blue-700 focus:outline-none font-medium text-base mb-4"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white px-4 py-3 rounded-xl hover:bg-blue-700 font-medium text-base mb-4"
           >
-            Masuk
+            {loading ? "Memproses..." : "Masuk"}
           </button>
 
-          <p className="text-gray-600 text-xs text-center">
-            Dengan masuk, kamu menyetujui Kebijakan Privasi dan Syarat & Ketentuan SpeakBuddy
-          </p>
         </form>
+
+        <p className="text-gray-600 text-xs text-center">
+          Dengan masuk, kamu menyetujui Kebijakan Privasi & Syarat SpeakBuddy
+        </p>
       </div>
     </div>
   );
