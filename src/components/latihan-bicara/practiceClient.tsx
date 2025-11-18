@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useExercise } from "@/hooks/useExercise";
+import LoadingPopup from "./loadingPopUp";
 
 export default function PracticeClient({ level }: { level: string }) {
   const {
@@ -18,6 +19,7 @@ export default function PracticeClient({ level }: { level: string }) {
   const [isRecording, setIsRecording] = useState(false);
   const [score, setScore] = useState(0);
   const [attemptResult, setAttemptResult] = useState<any | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Recording states
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -69,20 +71,27 @@ export default function PracticeClient({ level }: { level: string }) {
   };
 
   const submitRecording = async () => {
-    if (!currentItem || !recordBlob) return;
+    setIsSubmitting(true);
 
-    stopRecording();
+    try {
+      if (!currentItem || !recordBlob) return;
 
-    const result = await recordAttempt(currentItem.id, recordBlob);
+      stopRecording();
 
-    result.feedback = cleanFeedback(result.feedback);
-    // Simpan result dari API
-    setAttemptResult(result);
+      const result = await recordAttempt(currentItem.id, recordBlob);
 
-    const Score = result?.accuracy ?? result?.score ?? 0;
+      result.feedback = cleanFeedback(result.feedback);
+      // Simpan result dari API
+      setAttemptResult(result);
 
-    setScore(Score);
-    setStep("result");
+      const Score = result?.accuracy ?? result?.score ?? 0;
+
+      setScore(Score);
+      setStep("result");
+    } finally {
+      setIsSubmitting(false);
+    }
+    
   };
 
   function cleanFeedback(text: string) {
@@ -132,9 +141,15 @@ export default function PracticeClient({ level }: { level: string }) {
     startRecordingNow();
   };
 
-  if (loading || !currentItem) return <p>Loading...</p>;
+  if (!currentItem) {
+    return (
+      <LoadingPopup />
+    );
+  }
 
   const scoreDeg = `${Math.min(100, Math.max(0, score)) * 3.6}deg`;
+
+  //if (!currentItem) return null;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
@@ -219,10 +234,20 @@ export default function PracticeClient({ level }: { level: string }) {
 
                 <button
                   onClick={submitRecording}
-                  className="px-6 py-3 rounded-xl bg-[#096CF6] text-white font-semibold"
+                  disabled={isRecording}
+                  className={`px-6 py-3 rounded-xl font-semibold text-white 
+                    ${isRecording ? "bg-blue-300 cursor-not-allowed" : "bg-[#096CF6]"}`}
                 >
                   Kirim
                 </button>
+
+                {isSubmitting && (
+                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+                  <div className="bg-white p-6 rounded-xl shadow-lg">
+                    <p className="text-lg font-semibold">Mengirim jawaban...</p>
+                  </div>
+                </div>
+              )}
               </div>
             </div>
           </div>
