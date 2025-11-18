@@ -1,40 +1,47 @@
+"use client"
+
 import React from "react";
 import Link from "next/link";
 import { HeroKonsul } from "@/app/components/HeroKonsul";
+import useTherapists from "@/hooks/useTherapists";
 
 export default function HomeKonsul() {
-  const terapis = [
-    {
-      name: "Rizky Aditya Pratama, A.Md.TW",
-      role: "Terapi Wicara",
-      price: 59000,
-    },
-    {
-      name: "Nadia Ayu Lestari, A.Md.TW",
-      role: "Terapi Wicara",
-      price: 59000,
-    },
-    {
-      name: "Siti Rahma Dewi, A.Md.TW",
-      role: "Terapi Wicara",
-      price: 59000,
-    },
-    {
-      name: "Melati Putri Anindya, A.Md.TW",
-      role: "Terapi Wicara",
-      price: 59000,
-    },
-    {
-      name: "Laras Wening Puspita, A.Md.TW",
-      role: "Terapi Wicara",
-      price: 59000,
-    },
-    {
-      name: "Gantang Satria Yudha S.Kom",
-      role: "Terapi BackEnd",
-      price: 100000,
-    },
-  ];
+  const { therapists, loading } = useTherapists();
+
+  const PRICE = 59000;
+
+  // const terapis = [
+  //   {
+  //     name: "Rizky Aditya Pratama, A.Md.TW",
+  //     role: "Terapi Wicara",
+  //     price: 59000,
+  //   },
+  //   {
+  //     name: "Nadia Ayu Lestari, A.Md.TW",
+  //     role: "Terapi Wicara",
+  //     price: 59000,
+  //   },
+  //   {
+  //     name: "Siti Rahma Dewi, A.Md.TW",
+  //     role: "Terapi Wicara",
+  //     price: 59000,
+  //   },
+  //   {
+  //     name: "Melati Putri Anindya, A.Md.TW",
+  //     role: "Terapi Wicara",
+  //     price: 59000,
+  //   },
+  //   {
+  //     name: "Laras Wening Puspita, A.Md.TW",
+  //     role: "Terapi Wicara",
+  //     price: 59000,
+  //   },
+  //   {
+  //     name: "Gantang Satria Yudha S.Kom",
+  //     role: "Terapi BackEnd",
+  //     price: 100000,
+  //   },
+  // ];
 
   return (
     <>
@@ -121,29 +128,28 @@ export default function HomeKonsul() {
           </div>
 
           {/* Therapist Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 w-full">
-            {terapis.map((t, i) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+            {therapists.map((t) => (
               <div
-                key={i}
-                className="rounded-2xl border border-gray-200 bg-white shadow-sm p-5 lg:p-6 flex items-center gap-4 w-full"
+                key={t.id}
+                className="rounded-2xl border border-gray-200 bg-white shadow-sm p-5 flex items-center gap-4"
               >
                 <div className="flex items-center gap-4 flex-1">
-                  <div className="h-20 w-20 rounded-full bg-gray-200 shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-gray-900 text-sm lg:text-base">
-                      {t.name}
-                    </p>
-                    <p className="text-xs lg:text-sm text-gray-500 mt-0.5">
-                      {t.role}
-                    </p>
-                    <p className="mt-2 font-semibold text-gray-900 text-sm lg:text-base">
-                      Rp {t.price.toLocaleString("id-ID")}
+                  <div className="h-20 w-20 rounded-full bg-gray-200"></div>
+
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900">{t.name}</p>
+
+                    <p className="text-sm text-gray-500">Terapi Wicara</p>
+
+                    <p className="mt-2 font-semibold text-gray-900">
+                      Rp {PRICE.toLocaleString("id-ID")}
                     </p>
                   </div>
                 </div>
-                <Link
-                  href="/konsultasi/BuatJanji"
-                  className="px-6 py-2 bg-[#096CF6] text-white rounded-full font-semibold text-sm hover:bg-blue-700 transition-colors whitespace-nowrap"
+
+                <Link href="/konsultasi/BuatJanji"
+                  className="px-6 py-2 bg-[#096CF6] text-white rounded-full font-semibold"
                 >
                   Konsul
                 </Link>

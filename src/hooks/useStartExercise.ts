@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api/v1";
+
 export const useStartExercise = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -29,7 +31,7 @@ export const useStartExercise = () => {
       formData.append('level', level);
 
       const res = await axios.post(
-        'http://localhost:8080/api/v1/exercise/start',
+        `${API}/exercise/start`,
         formData,
         {
             headers: {
