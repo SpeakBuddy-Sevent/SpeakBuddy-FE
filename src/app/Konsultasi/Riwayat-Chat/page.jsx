@@ -77,14 +77,14 @@ export default function HomeKonsul() {
             </div>
           </aside>
           {/* Konten Utama */}
-          <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6">
+          <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-2">
             <div className="flex items-center justify-between px-6 py-4">
               <p className="text-xl font-bold text-black">Chat Terapis</p>
             </div>
 
-            <div className="px-6 pb-6 space-y-6">
+            <div className="px-6 pb-6 divide-y divide-gray-200">
               {/* Row 1 */}
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4 pb-6">
                 <div className="h-20 w-20 rounded-full bg-gray-200 shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-3">
@@ -104,7 +104,7 @@ export default function HomeKonsul() {
               </div>
 
               {/* Row 2 */}
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4 pt-6">
                 <div className="h-20 w-20 rounded-full bg-gray-200 shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-3">

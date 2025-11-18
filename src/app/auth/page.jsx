@@ -11,7 +11,7 @@ export default function AuthPage() {
   return (
     <div className="bg-[#096CF6] flex items-center justify-center min-h-[80vh] p-4">
       <div className="bg-white rounded-3xl shadow-xl max-w-md w-full p-6">
-        <button onClick={() => router.back()} className="flex items-center text-black mb-6">
+        <button onClick={() => router.back()} className="group flex items-center text-black hover:text-[#096CF6] transition-colors duration-200 mb-6">
              <svg
               width="24"
               height="24"
@@ -19,10 +19,11 @@ export default function AuthPage() {
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
+              className="transition-colors duration-200"
             >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-          <span className="ml-2 text-sm font-medium">Kembali</span>
+          <span className="ml-2 text-base font-medium transition-colors duration-200">Kembali</span>
         </button>
 
         <div className="rounded-2xl p-4 flex justify-center">
