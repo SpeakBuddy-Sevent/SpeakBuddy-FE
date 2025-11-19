@@ -4,6 +4,7 @@
 import axios from "axios";
 import { useState } from "react";
 import {BookConsultationPayload} from "@/types/BookConsultationPayload";
+import { toast } from "react-toastify";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api/v1";
 
@@ -42,9 +43,14 @@ export default function useConsultation() {
         }
       );
 
+      toast.success("Konsultasi berhasil dibuat!");
+
       return res.data;
     } catch (err: any) {
-      setError(err.response?.data?.message || "Gagal membuat konsultasi");
+        const msg = err.response?.data?.message || "Gagal membuat konsultasi";
+
+        toast.error(msg);
+        setError(msg);
       throw err;
     } finally {
       setLoading(false);
