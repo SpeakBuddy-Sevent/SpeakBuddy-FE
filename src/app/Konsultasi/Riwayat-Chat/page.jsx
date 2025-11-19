@@ -80,7 +80,7 @@ export default function HomeKonsul() {
               </div>
               <nav className="p-2">
                 <a
-                  href="/Konsultasi"
+                  href="/konsultasi"
                   className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 text-sm sm:text-base group mb-1"
                 >
                   <svg
@@ -100,7 +100,7 @@ export default function HomeKonsul() {
                   Buat Janji
                 </a>
                 <a
-                  href="/Konsultasi/Riwayat-Chat"
+                  href="/konsultasi/Riwayat-Chat"
                   className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-blue-600 font-medium bg-blue-50 transition-all duration-200 text-sm sm:text-base"
                 >
                   <svg
