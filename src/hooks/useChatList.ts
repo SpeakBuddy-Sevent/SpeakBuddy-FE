@@ -16,7 +16,13 @@ export default function useChatList() {
 
     try {
       const token = localStorage.getItem("token");
-      const userId = localStorage.getItem("userId");
+
+      const therapistRes = await axios.get(`${API}/therapist`);
+      const therapistMap: Record<number, string> = {};
+
+      therapistRes.data.forEach((t: any) => {
+        therapistMap[t.id] = t.name;
+      });
 
       const res = await axios.get(`${API}/chat/me`, {
         headers: {
@@ -27,7 +33,7 @@ export default function useChatList() {
       const mapped = res.data.data.map((chat: any) => {
         return {
           id: chat.id,                 
-          therapist_name: "Terapis",   
+          therapist_name: therapistMap[chat.therapist_id] || "Terapis",
           last_message: chat.last_message ?? "",
           last_time: chat.last_time ?? "",
         };

@@ -20,7 +20,7 @@ export default function useTherapists() {
       setLoading(true);
       setError(null);
 
-      const res = await axios.get(`${API}/therapists`, {
+      const res = await axios.get(`${API}/therapist`, {
         withCredentials: true,
       });
 
