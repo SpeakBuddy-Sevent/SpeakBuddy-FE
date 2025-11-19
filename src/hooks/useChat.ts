@@ -34,15 +34,19 @@ export default function useChat(chatID?: string) {
     }
   };
 
-  // SEND message
-  const sendMessage = async (therapistID: string, text: string) => {
+  // SEND message (pakai chatID)
+  const sendMessage = async (text: string) => {
+    if (!chatID) return;
+
     try {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        `${API}/chat/${therapistID}/send`,
+        `${API}/chat/${chatID}/send`,
         { text },
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
       fetchMessages(); // refresh setelah kirim
@@ -53,8 +57,8 @@ export default function useChat(chatID?: string) {
 
   useEffect(() => {
     fetchMessages();
-    const interval = setInterval(fetchMessages, 2000);
 
+    const interval = setInterval(fetchMessages, 2000);
     return () => clearInterval(interval);
   }, [chatID]);
 

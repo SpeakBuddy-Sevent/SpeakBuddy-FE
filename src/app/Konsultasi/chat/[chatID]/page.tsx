@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import useChat from "@/hooks/useChat";
 
 export default function ChatRoom() {
-  const { chatID } = useParams();
-  const { messages, sendMessage } = useChat(chatID as string);
+  const { chatId } = useParams();
+  const { messages, sendMessage } = useChat(chatId as string);
   const [text, setText] = useState("");
 
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -16,13 +16,9 @@ export default function ChatRoom() {
 
   const handleSend = () => {
     if (!text.trim()) return;
-    sendMessage(therapistID, text);
+    sendMessage(text);
     setText("");
   };
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
 
   return (
     <main className="w-full max-w-3xl mx-auto px-4 py-6">
