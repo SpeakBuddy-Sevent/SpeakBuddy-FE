@@ -92,7 +92,7 @@ export default function HomeKonsul() {
                 Buat Janji
               </Link>
               <Link
-                href="/konsultasi/Riwayat-Chat"
+                href="/konsultasi/chat"
                 className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-[#096CF6] text-sm sm:text-base"
               >
                 <svg
