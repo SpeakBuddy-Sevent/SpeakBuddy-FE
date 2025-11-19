@@ -15,7 +15,9 @@ export interface Message {
 
 export default function useChat(chatID?: string) {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, 
+    // setLoading
+] = useState(false);
 
   // GET messages
   const fetchMessages = async () => {

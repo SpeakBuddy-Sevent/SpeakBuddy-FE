@@ -1,7 +1,9 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { 
+    // useEffect, 
+    useRef, useState } from "react";
 import useChat from "@/hooks/useChat";
 
 export default function ChatRoom() {
@@ -12,7 +14,7 @@ export default function ChatRoom() {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   const userID = localStorage.getItem("user_id") || "me"; 
-  const therapistID = localStorage.getItem("therapist_id") || "therapist";
+  // const therapistID = localStorage.getItem("therapist_id") || "therapist";
 
   const handleSend = () => {
     if (!text.trim()) return;

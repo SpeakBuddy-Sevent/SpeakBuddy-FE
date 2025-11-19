@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+// import Link from "next/link";
 import { HeroKonsul } from "@/app/components/HeroKonsul";
 import useChatList from "@/hooks/useChatList";
 
@@ -15,7 +15,10 @@ type ChatCardProps = {
 
 export default function HomeKonsul() {
   const router = useRouter();
-  const { data: chatList, loading, error } = useChatList();
+  const { data: chatList, 
+    // loading, 
+    // error 
+  } = useChatList();
   
   const handleChatClick = (chatId: number, name: string) => {
     router.push(`/konsultasi/chat/${chatId}`);

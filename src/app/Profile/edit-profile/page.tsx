@@ -4,10 +4,13 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import useProfileEdit from "@/hooks/useProfileEdit";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function ProfileEdit() {
   const router = useRouter();
-  const { data, loading, error, updateName, upsertProfile } = useProfileEdit();
+  const { data, 
+    // loading, error, 
+    updateName, upsertProfile } = useProfileEdit();
 
   const [name, setName] = useState("");
   const [age, setAge] = useState<number | null>(null);
@@ -55,7 +58,7 @@ export default function ProfileEdit() {
 
         <aside className="space-y-4">
           <div className="rounded-2xl bg-[#096CF6] text-white p-6 shadow-sm relative overflow-hidden bg-[url('/BgProfile1.svg')] bg-cover bg-right bg-no-repeat">
-            <img src="/LogoSpeakBuddy.svg" className="h-[0.895rem] w-auto mb-2" alt="SpeakBuddy" />
+            <Image src="/LogoSpeakBuddy.svg" className="h-[0.895rem] w-auto mb-2" alt="SpeakBuddy" />
             <p className="text-xl font-bold">Pusat Akun</p>
           </div>
         </aside>
