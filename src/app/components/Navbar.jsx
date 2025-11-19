@@ -2,11 +2,14 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import useUser from "@/hooks/useUser";
 
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { user } = useUser();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -68,12 +71,21 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/auth"
-              className="px-4 py-1.5 sm:px-6 sm:py-2 lg:px-8 bg-[#FECB08] text-white text-sm sm:text-base font-bold rounded-full hover:-translate-y-1 hover:shadow-lg transition-transform"
-            >
-              Masuk
-            </Link>
+            {user ? (
+              <Link
+                href="/profile"
+                className="px-4 py-1.5 sm:px-6 sm:py-2 lg:px-8 bg-white text-[#096CF6] text-sm sm:text-base font-bold rounded-full hover:-translate-y-1 hover:shadow-lg transition-transform"
+              >
+                {user.name.split(" ")[0]} {/* nama depan saja */}
+              </Link>
+            ) : (
+              <Link
+                href="/auth"
+                className="px-4 py-1.5 sm:px-6 sm:py-2 lg:px-8 bg-[#FECB08] text-white text-sm sm:text-base font-bold rounded-full hover:-translate-y-1 hover:shadow-lg transition-transform"
+              >
+                Masuk
+              </Link>
+            )}
 
             {/* Hamburger Menu Button (visible only on mobile/tablet) */}
             <button
