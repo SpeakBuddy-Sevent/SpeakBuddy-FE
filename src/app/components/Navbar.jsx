@@ -57,7 +57,7 @@ export default function Navbar() {
 
               {/* KONSULTASI */}
               <Link
-                href="/Konsultasi"
+                href="/konsultasi"
                 className={`text-white font-medium px-4 py-2 rounded-md relative transition-all ${
                   pathname === "/Konsultasi" ? "" : "hover:bg-white/10"
                 }`}
@@ -130,7 +130,7 @@ export default function Navbar() {
                 href="/Konsultasi"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`text-white font-medium px-4 py-3 rounded-md transition-all ${
-                  pathname === "/Konsultasi"
+                  pathname === "/konsultasi"
                     ? "bg-white/20"
                     : "hover:bg-white/10"
                 }`}

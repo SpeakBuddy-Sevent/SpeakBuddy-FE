@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useExercise } from "@/hooks/useExercise";
 import LoadingPopup from "./loadingPopUp";
+import Image from "next/image";
 
 export default function PracticeClient({ level }: { level: string }) {
   const {
@@ -11,7 +12,7 @@ export default function PracticeClient({ level }: { level: string }) {
     startExercise,
     nextItem,
     recordAttempt,
-    loading,
+    // loading,
   } = useExercise();
 
   const [step, setStep] = useState("intro");
@@ -156,9 +157,10 @@ export default function PracticeClient({ level }: { level: string }) {
       {/* header */}
       <div className="bg-white shadow-sm border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <img
+          <Image
             src="/LogoSpeakBuddy1.svg"
             className="h-6 sm:h-7 w-auto"
+            alt="logo"
           />
           <span className="text-xs sm:text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full font-medium">
             Soal: {currentItem.item_number}

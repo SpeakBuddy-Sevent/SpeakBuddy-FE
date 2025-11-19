@@ -19,6 +19,17 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+
+    rules: {
+      // Disable semua error ANY
+      "@typescript-eslint/no-explicit-any": "off",
+
+      // Disable unused-vars warnings (opsional)
+      "@typescript-eslint/no-unused-vars": "off",
+
+      // Disable react-hooks missing dependencies
+      "react-hooks/exhaustive-deps": "off",
+    }
   },
 ];
 

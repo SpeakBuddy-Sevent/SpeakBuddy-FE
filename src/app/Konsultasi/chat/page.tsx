@@ -1,71 +1,31 @@
-// deprecated
 "use client";
 import React from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+// import Link from "next/link";
 import { HeroKonsul } from "@/app/components/HeroKonsul";
+import useChatList from "@/hooks/useChatList";
 
-// Chat Card Component dengan hover animation
-const ChatCard = ({ name, message, time, onClick }) => (
-  <div 
-    onClick={onClick}
-    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-50 hover:shadow-md hover:scale-[1.02] active:scale-[0.9] group"
-  >
-    <div className="relative h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shrink-0 flex items-center justify-center text-white font-semibold text-lg sm:text-xl transition-transform duration-300 group-hover:scale-110">
-      {name.charAt(0)}
-    </div>
-    
-    <div className="flex-1 min-w-0">
-      <div className="flex items-start sm:items-center justify-between gap-2 sm:gap-3 flex-col sm:flex-row">
-        <p className="font-semibold text-gray-900 text-sm sm:text-base leading-tight group-hover:text-blue-600 transition-colors duration-300">
-          {name}
-        </p>
-        <span className="text-xs text-gray-500 whitespace-nowrap self-start sm:self-auto">
-          {time}
-        </span>
-      </div>
-      
-      <p className="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 line-clamp-2 leading-relaxed">
-        {message}
-      </p>
-      
-      {/* Indicator arrow - muncul saat hover */}
-      <div className="flex items-center gap-1 mt-2 text-blue-600 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <span>Buka chat</span>
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          className="h-3 w-3 transform group-hover:translate-x-1 transition-transform duration-300" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </div>
-    </div>
-  </div>
-);
+type ChatCardProps = {
+  name: string;
+  message: string;
+  time: string;
+  onClick: () => void;
+};
+
 
 export default function HomeKonsul() {
-  const chatList = [
-    {
-      id: 1,
-      name: "Claudia Intan Permata, A.Md.TW",
-      message: "InsyaAllah, Bu. Yang penting konsisten. Banyak anak speech delay yang akhirnya bisa mengejar ketertinggalannya dengan latihan rutin. Kita kerjakan bersama ya 😊",
-      time: "10.22"
-    },
-    {
-      id: 2,
-      name: "Siti Rahma Dewi, A.Md.TW",
-      message: "InsyaAllah, Bu. Yang penting konsisten. Banyak anak speech delay yang akhirnya bisa mengejar ketertinggalannya dengan latihan rutin. Kita kerjakan bersama ya 😊",
-      time: "26/09/2025"
-    }
-  ];
-
-  const handleChatClick = (chatId, name) => {
-    alert(`Membuka chat dengan ${name}`);
-    // Di implementasi asli, gunakan: router.push(`/chat/${chatId}`)
+  const router = useRouter();
+  const { data: chatList, 
+    // loading, 
+    // error 
+  } = useChatList();
+  
+  const handleChatClick = (chatId: number, name: string) => {
+    router.push(`/konsultasi/chat/${chatId}`);
   };
 
+  console.log("chatList =", chatList);
+  
   return (
     <>
       <HeroKonsul />
@@ -128,7 +88,7 @@ export default function HomeKonsul() {
               <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 bg-gray-50 border-b border-gray-200">
                 <div>
                   <p className="text-lg sm:text-xl font-bold text-gray-900">Chat Terapis</p>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-0.5">{chatList.length} percakapan aktif</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-0.5">{chatList?.length ?? 0} percakapan aktif</p>
                 </div>
                
               </div>
@@ -136,11 +96,12 @@ export default function HomeKonsul() {
               <div className="divide-y divide-gray-100">
                 {chatList.map((chat) => (
                   <ChatCard
-                    key={chat.id}
-                    name={chat.name}
-                    message={chat.message}
-                    time={chat.time}
-                    onClick={() => handleChatClick(chat.id, chat.name)}
+                  key={chat.id}
+                  name={chat.therapist_name}
+                  message={chat.last_message}
+                  time={chat.last_time}
+
+                  onClick={() => handleChatClick(chat.id, chat.therapist_name)}
                   />
                 ))}
               </div>
@@ -163,3 +124,43 @@ export default function HomeKonsul() {
     </>
   );
 }
+
+const ChatCard: React.FC<ChatCardProps> = ({ name, message, time, onClick }) => (
+  <div 
+    onClick={onClick}
+    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-50 hover:shadow-md hover:scale-[1.02] active:scale-[0.9] group"
+  >
+    <div className="relative h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shrink-0 flex items-center justify-center text-white font-semibold text-lg sm:text-xl transition-transform duration-300 group-hover:scale-110">
+      {name.charAt(0)}
+    </div>
+    
+    <div className="flex-1 min-w-0">
+      <div className="flex items-start sm:items-center justify-between gap-2 sm:gap-3 flex-col sm:flex-row">
+        <p className="font-semibold text-gray-900 text-sm sm:text-base leading-tight group-hover:text-blue-600 transition-colors duration-300">
+          {name}
+        </p>
+        <span className="text-xs text-gray-500 whitespace-nowrap self-start sm:self-auto">
+          {time}
+        </span>
+      </div>
+      
+      <p className="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 line-clamp-2 leading-relaxed">
+        {message}
+      </p>
+      
+      {/* Indicator arrow - muncul saat hover */}
+      <div className="flex items-center gap-1 mt-2 text-blue-600 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <span>Buka chat</span>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="h-3 w-3 transform group-hover:translate-x-1 transition-transform duration-300" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+);
