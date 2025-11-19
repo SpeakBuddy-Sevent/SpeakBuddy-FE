@@ -1,12 +1,34 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import useDataAnak from "@/hooks/useDataAnak";
+import axios from "axios";
 
 export default function BuatJanji() {
+  const searchParams = useSearchParams();
+  const therapistUserID = searchParams.get("therapist");
+
+  const { child, loading } = useDataAnak();
+
+  const [childName, setChildName] = useState("");
+  const [childSex, setChildSex] = useState("");
+  const [childAge, setChildAge] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+
   const router = useRouter();
   const slots = ["09:00-10:00", "10:00-11.00", "11:00-12.00", "13:00-14.00"];
   const [selectedSlot, setSelectedSlot] = useState(null);
+
+  useEffect(() => {
+    if (child) {
+      setChildName(child.name);
+      setChildSex(child.sex);
+      setChildAge(child.age);
+    }
+  }, [child]);
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
       <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
@@ -49,8 +71,8 @@ export default function BuatJanji() {
                 <div className="text-black font-bold mb-3">Nama</div>
                 <div className="relative">
                   <input
-                    type="text"
-                    defaultValue="Ayu Larasati"
+                    value={childName}
+                    onChange={(e) => setChildName(e.target.value)}
                     className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-blackfocus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -70,10 +92,12 @@ export default function BuatJanji() {
               </div>
 
               <div>
-                <div className="text-black font-bold mb-3">Tanggal Lahir</div>
+                <div className="text-black font-bold mb-3">Umur</div>
                 <div className="relative">
                   <input
-                    type="date"
+                    type="number"
+                    value={childAge}
+                    onChange={(e) => setChildAge(e.target.value)}
                     className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   />
 
@@ -91,7 +115,10 @@ export default function BuatJanji() {
               <div>
                 <div className="text-black font-bold mb-3">Jenis Kelamin</div>
                 <div className="relative">
-                  <select className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 appearance-none cursor-pointer">
+                  <select 
+                    value={childSex}
+                    onChange={(e) => setChildSex(e.target.value)}
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 appearance-none cursor-pointer">
                     <option value="">Pilih Jenis Kelamin</option>
                     <option value="perempuan">Perempuan</option>
                     <option value="laki">Laki-laki</option>
@@ -128,8 +155,11 @@ export default function BuatJanji() {
                 <div className="relative">
                   <input
                     type="date"
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus:border-blue-500"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-700"
                   />
+
                   <span className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-gray-400">
                     <svg
                       width="18"
@@ -170,12 +200,22 @@ export default function BuatJanji() {
             </div>
           </div>
           <div className="mt-4 w-full">
-            <Link
-              href="/Konsultasi/BuatJanji/Bayar"
-              className="block w-full bg-[#096CF6] text-white px-6 py-4 rounded-xl text-xl font-semibold text-center hover:bg-blue-700 transition-colors"
-            >
-              Selanjutnya
-            </Link>
+          <Link
+            href={{
+              pathname: "/konsultasi/BuatJanji/Bayar",
+              query: {
+                childName,
+                childSex,
+                childAge,
+                slot: selectedSlot,
+                date: selectedDate,
+                therapistId: therapistUserID,
+              },
+            }}
+            className="block w-full bg-[#096CF6] text-white px-6 py-4 rounded-xl text-xl font-semibold text-center"
+          >
+            Selanjutnya
+          </Link>
           </div>
         </section>
       </div>

@@ -1,9 +1,33 @@
 "use client";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+//import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import useConsultation from "@/hooks/useConsultation";
 
-export default function DetaiPembayaran() {
+export default function DetailPembayaran() {
+  const params = useSearchParams();
   const router = useRouter();
+
+  const { bookConsultation, loading } = useConsultation();
+
+  const handlePay = async () => {
+    await bookConsultation({
+      userId: Number(params.get("userId")),          
+      therapistUserId: Number(params.get("therapistId")),
+
+      childName: params.get("childName") || "",
+      childSex: params.get("childSex") || "",
+      childAge: Number(params.get("childAge")) || 0,
+
+      date: params.get("date") || "",
+      timeSlot: params.get("slot") || "",
+
+      isPaid: true,
+    });
+
+    router.push("/");
+  };
+
+  // console.log({ slot, date, therapistId, childName, childSex, childAge });
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-10">
       <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
@@ -117,8 +141,12 @@ export default function DetaiPembayaran() {
             </div>
           </div>
           <div className="mt-4">
-            <button className="w-full bg-[#096CF6] text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-semibold hover:bg-blue-700 transition-colors">
-              Bayar
+            <button
+              onClick={handlePay}
+              disabled={loading}
+              className="bg-[#096CF6] text-white w-full py-4 rounded-xl"
+            >
+              {loading ? "Memproses..." : "Bayar"}
             </button>
           </div>
         </section>

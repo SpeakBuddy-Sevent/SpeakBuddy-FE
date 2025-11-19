@@ -148,7 +148,7 @@ export default function HomeKonsul() {
                   </div>
                 </div>
 
-                <Link href="/konsultasi/BuatJanji"
+                <Link href={`/konsultasi/BuatJanji?therapist=${t.id}`}
                   className="px-6 py-2 bg-[#096CF6] text-white rounded-full font-semibold"
                 >
                   Konsul
