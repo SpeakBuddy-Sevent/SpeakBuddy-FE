@@ -1,7 +1,15 @@
+"use client"
+
 // src/app/UI/Profile.jsx
 import Link from "next/link";
+import useProfile from "@/hooks/useProfile";
+
 
 export default function Profile() {
+  const { data, error } = useProfile();
+  
+  if (error) return <p className="text-red-500">{error}</p>;
+  
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
       <div className="grid grid-cols-2 
@@ -9,7 +17,7 @@ export default function Profile() {
         <aside className="space-y-4">
           <div className="rounded-2xl bg-[#096CF6] text-white p-6 shadow-sm relative overflow-hidden bg-[url('/BgProfile1.svg')] bg-cover bg-right bg-no-repeat">
             <p className="text-sm opacity-90">Halo,</p>
-            <p className="text-xl font-bold">Ayu Larasati</p>
+            <p className="text-xl font-bold">{data?.name}</p>
           </div>
 
           <div className="rounded-2xl bg-white border border-gray-200 shadow-sm">
@@ -67,7 +75,7 @@ export default function Profile() {
           <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6">
             <div className="flex items-center justify-between px-6 py-4 ">
               <p className=" text-xl font-bold text-black">Profil</p>
-              <Link href="#" className="text-[#096CF6] font-bold text-lg">
+              <Link href="/profile/edit-profile" className="text-[#096CF6] font-bold text-lg">
                 Ubah
               </Link>
             </div>
@@ -80,19 +88,19 @@ export default function Profile() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2  gap-x-6 gap-y-4">
                 <div className="text-gray-500 font-medium">Nama</div>
-                <div className="text-black font-medium">Ayu Larasati</div>
+                <div className="text-black font-medium">{data?.name}</div>
 
                 <div className="text-gray-500 font-medium">Nomor HP</div>
-                <div className="text-black font-medium">+6285810393050</div>
+                <div className="text-black font-medium">{data?.phone || "Belum diisi"}</div>
 
                 <div className="text-gray-500 font-medium">Email</div>
-                <div className="text-black font-medium">ayularasati@gmail.com</div>
+                <div className="text-black font-medium">{data?.email}</div>
 
                 <div className="text-gray-500 font-medium">Tanggal Lahir</div>
-                <div className="text-gray-300 font-medium">Isi tanggal lahirmu</div>
+                <div className="text-gray-300 font-medium">{data?.age ?? "Isi tanggal lahirmu"}</div>
 
                 <div className="text-gray-500 font-medium">Jenis Kelamin</div>
-                <div className="text-gray-300 font-medium">Pilih jenis kelaminmu</div>
+                <div className="text-gray-300 font-medium">{data?.sex ?? "Pilih jenis kelaminmu"}</div>
               </div>
             </div>
           </div>
