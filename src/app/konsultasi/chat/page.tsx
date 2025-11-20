@@ -6,6 +6,7 @@ import { HeroKonsul } from "@/app/components/HeroKonsul";
 import useChatList from "@/hooks/useChatList";
 import Link from "next/link";
 
+
 type ChatCardProps = {
   name: string;
   message: string;
