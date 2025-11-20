@@ -17,6 +17,18 @@ export default function Profile() {
   
   if (error) return <p className="text-red-500">{error}</p>;
 
+  const handleLogout = async () => {
+    try {
+      localStorage.removeItem("token");
+
+
+      router.push("/auth");
+    } catch (err) {
+      console.error("Logout error:", err);
+    }
+  };
+
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-10 h-screen">
       <div className="grid grid-cols-2 
@@ -82,6 +94,28 @@ export default function Profile() {
                 Data Anak
               </button>
             </nav>
+            <button
+              onClick={handleLogout}
+              className="flex w-full text-left items-center gap-3 px-4 py-3 rounded-lg font-medium text-red-600 hover:bg-red-50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 17l5-5m0 0l-5-5m5 5H9m4 8H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7"
+                />
+              </svg>
+              Logout
+            </button>
+
           </div>
         </aside>
 

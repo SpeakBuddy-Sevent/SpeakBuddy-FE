@@ -1,13 +1,39 @@
 "use client";
 //import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useConsultation from "@/hooks/useConsultation";
+import useChat from "@/hooks/useChat";
+import useStartChat from "@/hooks/useStartChat";
 
 export default function DetailPembayaran() {
   const params = useSearchParams();
   const router = useRouter();
-
+  
   const { bookConsultation, loading } = useConsultation();
+  const { startChat } = useStartChat();
+
+  const [chatID, setChatID] = useState<string | null>(null);
+  const chat = useChat(chatID || undefined);
+
+      useEffect(() => {
+        if (!chatID) return;
+
+        const sendInitialMessage = async () => {
+          await chat.sendMessage(
+            `Halo kak, saya sudah melakukan pembayaran konsultasi untuk:\n
+    Nama anak: ${params.get("childName")}
+    Tanggal: ${params.get("date")}
+    Jam: ${params.get("slot")}
+
+    Terima kasih 🙏`
+          );
+
+          router.push(`/konsultasi/chat/${chatID}`);
+        };
+
+        sendInitialMessage();
+      }, [chatID]);
 
   const handlePay = async () => {
     await bookConsultation({
@@ -24,8 +50,9 @@ export default function DetailPembayaran() {
       isPaid: true,
     });
 
-    router.push("/");
-  };
+    const chatData = await startChat(params.get("therapistId")!);
+    setChatID(chatData.chatID);
+  }
 
   // console.log({ slot, date, therapistId, childName, childSex, childAge });
   return (
@@ -118,12 +145,18 @@ export default function DetailPembayaran() {
                   Pilih Metode
                 </div>
                 <div className="relative">
-                  <input
-                  
-                    type="date"
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus:border-blue-500"
-                  />
-                  <span className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  <select
+                    defaultValue=""
+                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus:border-blue-500 appearance-none"
+                  >
+                    <option value="" disabled>
+                      Pilih metode pembayaran
+                    </option>
+                    <option value="bank">Bank Transfer</option>
+                    <option value="qris">QRIS</option>
+                  </select>
+
+                  <span className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
                     <svg
                       width="18"
                       height="18"
@@ -132,11 +165,11 @@ export default function DetailPembayaran() {
                       stroke="currentColor"
                       strokeWidth="2"
                     >
-                      <rect x="3" y="4" width="18" height="18" rx="2" />
-                      <path d="M16 2v4M8 2v4M3 10h18" />
+                      <path d="M6 9l6 6 6-6" />
                     </svg>
                   </span>
                 </div>
+
               </div>
             </div>
           </div>

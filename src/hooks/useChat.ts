@@ -30,11 +30,22 @@ export default function useChat(chatID?: string) {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setMessages(res.data);
+      // MAP FIELD BACKEND → FRONTEND
+      const raw = res.data || [];
+      const mapped = raw.map((msg: any) => ({
+        id: msg._id,
+        chat_id: msg.chatId,
+        sender_id: msg.senderId,
+        text: msg.text,
+        timestamp: msg.timestamp
+      }));
+
+      setMessages(mapped);
     } catch (err) {
       console.error("Failed to fetch messages:", err);
     }
   };
+
 
   // SEND message (pakai chatID)
   const sendMessage = async (text: string) => {

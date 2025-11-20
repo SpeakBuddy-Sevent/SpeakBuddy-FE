@@ -59,11 +59,11 @@ export default function Navbar() {
               <Link
                 href="/konsultasi"
                 className={`text-white font-medium px-4 py-2 rounded-md relative transition-all ${
-                  pathname === "/Konsultasi" ? "" : "hover:bg-white/10"
+                  pathname === "/konsultasi" ? "" : "hover:bg-white/10"
                 }`}
               >
                 Konsultasi
-                {pathname.startsWith("/Konsultasi") && (
+                {pathname.startsWith("/konsultasi") && (
                   <span className="absolute bottom-0 left-0 right-0 h-1 bg-[#FECB08] rounded-full"></span>
                 )}
               </Link>
