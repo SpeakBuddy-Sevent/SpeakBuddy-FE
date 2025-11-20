@@ -1,12 +1,32 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function BuatJanji() {
   const router = useRouter();
   const slots = ["09:00-10:00", "10:00-11.00", "11:00-12.00", "13:00-14.00"];
   const [selectedSlot, setSelectedSlot] = useState(null);
+  
+  const [birthDate, setBirthDate] = useState(null);
+  const [consultDate, setConsultDate] = useState(null);
+
+  const [isBirthDateFocused, setIsBirthDateFocused] = useState(false);
+  const [isConsultDateFocused, setIsConsultDateFocused] = useState(false);
+
+  const birthDatePickerRef = useRef(null);
+  const consultDatePickerRef = useRef(null);
+  
+  const handleBirthCalendarClick = () => {
+    birthDatePickerRef.current?.setFocus();
+  };
+  
+  const handleConsultCalendarClick = () => {
+    consultDatePickerRef.current?.setFocus();
+  };
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
       <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
@@ -38,7 +58,8 @@ export default function BuatJanji() {
             <span>Kembali</span>
           </div>
           <h3 className="text-2xl font-bold text-gray-900">Buat Janji</h3>
-          {/* Card Atas */}
+          
+          {/* Card Atas - Data Pasien */}
           <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6">
             <div className="flex items-center justify-between px-6 py-2">
               <p className="text-xl font-bold text-black">Data Pasien</p>
@@ -51,7 +72,7 @@ export default function BuatJanji() {
                   <input
                     type="text"
                     defaultValue="Ayu Larasati"
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-blackfocus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
                     <svg
@@ -71,20 +92,41 @@ export default function BuatJanji() {
 
               <div>
                 <div className="text-black font-bold mb-3">Tanggal Lahir</div>
-                <div className="relative">
-                  <input
-                    type="date"
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                <div
+                  className={`relative w-full px-4 py-3 pr-12 border rounded-xl bg-white text-black transition-all ${
+                    isBirthDateFocused
+                      ? "border-blue-500 ring-2 ring-blue-100"
+                      : "border-gray-300"
+                  }`}
+                >
+                  <DatePicker
+                    ref={birthDatePickerRef}
+                    selected={birthDate}
+                    onChange={(date) => setBirthDate(date)}
+                    onFocus={() => setIsBirthDateFocused(true)}
+                    onBlur={() => setIsBirthDateFocused(false)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Pilih tanggal lahir"
+                    className="w-full border-none outline-none bg-transparent text-black"
+                    showYearDropdown
+                    scrollableYearDropdown
+                    yearDropdownItemNumber={100}
+                    maxDate={new Date()}
                   />
 
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400 pointer-events-none"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
+                  <span
+                    className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
+                    onClick={handleBirthCalendarClick}
                   >
-                    <path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z" />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-gray-400 hover:text-gray-600 transition-colors"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z" />
+                    </svg>
+                  </span>
                 </div>
               </div>
 
@@ -114,7 +156,6 @@ export default function BuatJanji() {
           </div>
 
           {/* Card Bawah - Jadwal Konsultasi */}
-
           <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6">
             <div className="flex items-center justify-between px-6 py-2">
               <p className="text-xl font-bold text-black">Jadwal Konsultasi</p>
@@ -125,22 +166,36 @@ export default function BuatJanji() {
                 <div className="text-black font-medium mb-3">
                   Tanggal Konsultasi
                 </div>
-                <div className="relative">
-                  <input
-                    type="date"
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus:border-blue-500"
+                <div
+                  className={`relative w-full px-4 py-3 pr-12 border rounded-xl bg-white text-black transition-all ${
+                    isConsultDateFocused
+                      ? "border-blue-500 ring-2 ring-blue-100"
+                      : "border-gray-300"
+                  }`}
+                >
+                  <DatePicker
+                    ref={consultDatePickerRef}
+                    selected={consultDate}
+                    onChange={(date) => setConsultDate(date)}
+                    onFocus={() => setIsConsultDateFocused(true)}
+                    onBlur={() => setIsConsultDateFocused(false)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Pilih tanggal konsultasi"
+                    className="w-full border-none outline-none bg-transparent text-black"
+                    minDate={new Date()}
                   />
-                  <span className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-gray-400">
+
+                  <span
+                    className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
+                    onClick={handleConsultCalendarClick}
+                  >
                     <svg
-                      width="18"
-                      height="18"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-gray-400 hover:text-gray-600 transition-colors"
+                      fill="currentColor"
                       viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
                     >
-                      <rect x="3" y="4" width="18" height="18" rx="2" />
-                      <path d="M16 2v4M8 2v4M3 10h18" />
+                      <path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z" />
                     </svg>
                   </span>
                 </div>
@@ -150,7 +205,7 @@ export default function BuatJanji() {
                 <div className="text-black font-medium mb-3">
                   Jam Konsultasi
                 </div>
-                <div className="flex flex-wrap gap-3 ">
+                <div className="flex flex-wrap gap-3">
                   {slots.map((s) => (
                     <button
                       key={s}
@@ -169,6 +224,7 @@ export default function BuatJanji() {
               </div>
             </div>
           </div>
+          
           <div className="mt-4 w-full">
             <Link
               href="/Konsultasi/BuatJanji/Bayar"
