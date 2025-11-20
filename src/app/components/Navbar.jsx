@@ -115,10 +115,10 @@ export default function Navbar() {
               </Link>
 
               <Link
-                href="/Konsultasi"
+                href="/konsultasi"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`text-white font-medium px-4 py-3 rounded-md transition-all ${
-                  pathname === "/Konsultasi"
+                  pathname === "/konsultasi"
                     ? "bg-white/20"
                     : "hover:bg-white/10"
                 }`}

@@ -10,10 +10,10 @@ export default function Home() {
     <>
       {/* <PreTest /> */}
       {/* <Dashboard /> */}
-      <Pretest />
-      <EditProfile />
+      {/* <Pretest />
+      <EditProfile /> */}
       <Profile />
-    <Konsultasi />
+    {/* <Konsultasi /> */}
     </>
   );
 }
