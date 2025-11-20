@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 // import Link from "next/link";
 import { HeroKonsul } from "@/app/components/HeroKonsul";
 import useChatList from "@/hooks/useChatList";
+import Link from "next/link";
+
 
 type ChatCardProps = {
   name: string;
@@ -60,7 +62,7 @@ export default function HomeKonsul() {
                   </svg>
                   Buat Janji
                 </a>
-                <a
+                <Link
                   href="/konsultasi/chat"
                   className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-blue-600 font-medium bg-blue-50 transition-all duration-200 text-sm sm:text-base"
                 >
@@ -77,7 +79,7 @@ export default function HomeKonsul() {
                     </g>
                   </svg>
                   Riwayat Chat
-                </a>
+                </Link>
               </nav>
             </div>
           </aside>
