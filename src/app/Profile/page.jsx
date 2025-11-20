@@ -4,15 +4,14 @@ import Link from "next/link";
 export default function Profile() {
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
-      <div className="grid grid-cols-2 
-            lg:grid-cols-4 gap-6">
-        <aside className="space-y-4">
+      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
+        <aside className="w-full lg:w-[280px] shrink-0">
           <div className="rounded-2xl bg-[#096CF6] text-white p-6 shadow-sm relative overflow-hidden bg-[url('/BgProfile1.svg')] bg-cover bg-right bg-no-repeat">
             <p className="text-sm opacity-90">Halo,</p>
             <p className="text-xl font-bold">Ayu Larasati</p>
           </div>
 
-          <div className="rounded-2xl bg-white border border-gray-200 shadow-sm">
+          <div className="rounded-2xl bg-white border border-gray-200 shadow-sm mt-6">
             <div className="px-6 py-4">
               <p className="text-gray-700 font-semibold">Dashboard</p>
             </div>
@@ -61,7 +60,7 @@ export default function Profile() {
           </div>
         </aside>
 
-        <section className="lg:col-span-3 space-y-5">
+        <section className="flex-1 space-y-4 sm:space-y-5">
           <h2 className="text-2xl font-bold text-gray-900">Pusat Akun</h2>
 
           <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6">
@@ -75,7 +74,6 @@ export default function Profile() {
             <div className="px-6 py-3">
               <div className="flex items-center gap-4 mb-6">
                 <div className="h-20 w-20 rounded-full bg-gray-300" />
-               
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2  gap-x-6 gap-y-4">
@@ -86,13 +84,19 @@ export default function Profile() {
                 <div className="text-black font-medium">+6285810393050</div>
 
                 <div className="text-gray-500 font-medium">Email</div>
-                <div className="text-black font-medium">ayularasati@gmail.com</div>
+                <div className="text-black font-medium">
+                  ayularasati@gmail.com
+                </div>
 
                 <div className="text-gray-500 font-medium">Tanggal Lahir</div>
-                <div className="text-gray-300 font-medium">Isi tanggal lahirmu</div>
+                <div className="text-gray-300 font-medium">
+                  Isi tanggal lahirmu
+                </div>
 
                 <div className="text-gray-500 font-medium">Jenis Kelamin</div>
-                <div className="text-gray-300 font-medium">Pilih jenis kelaminmu</div>
+                <div className="text-gray-300 font-medium">
+                  Pilih jenis kelaminmu
+                </div>
               </div>
             </div>
           </div>

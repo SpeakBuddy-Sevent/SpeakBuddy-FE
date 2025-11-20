@@ -1,6 +1,24 @@
 "use client";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // sesuaikan kalau nama token lain
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const goToLatihan = () => {
+    router.push(isLoggedIn ? "/latihan-bicara" : "/auth");
+  };
+
+  const goToKonsultasi = () => {
+    router.push(isLoggedIn ? "/konsultasi" : "/auth");
+  };
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-25 space-y-20 ">
       <section className="text-center space-y-4">
@@ -13,7 +31,10 @@ export default function Home() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-5 mt-8">
           {/* Card 1 - Latihan Bicara */}
-          <div className="group rounded-2xl border border-gray-200 bg-gray-100 md:bg-gray-100 bg-[#E6F0FE] p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE] animate-fade-in">
+          <div
+            onClick={goToLatihan}
+            className="group rounded-2xl border border-gray-200 bg-gray-100 md:bg-gray-100 bg-[#E6F0FE] p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE] animate-fade-in cursor-pointer"
+          >
             <div className="h-20 w-20 rounded-xl bg-gray-400 md:bg-gray-400 bg-[#096CF6] mx-auto mb-5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#096CF6]">
               <img className="h-12 w-12" src="/mic_home.svg" alt="mic" />
             </div>
@@ -40,7 +61,10 @@ export default function Home() {
           </div> */}
 
           {/* Card 3 - Konsultasi Terapis */}
-          <div className="group rounded-2xl border border-gray-200 bg-gray-100 md:bg-gray-100 bg-[#E6F0FE] p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE] animate-fade-in animation-delay-200">
+          <div
+            onClick={goToKonsultasi}
+            className="group rounded-2xl border border-gray-200 bg-gray-100 md:bg-gray-100 bg-[#E6F0FE] p-8 shadow-sm w-full h-80 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-[#E6F0FE] animate-fade-in animation-delay-200 cursor-pointer"
+          >
             <div className="h-20 w-20 rounded-xl bg-gray-400 md:bg-gray-400 bg-[#096CF6] mx-auto mb-5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#096CF6]">
               <img className="h-12 w-12" src="/konsultan.svg" alt="konsultan" />
             </div>
@@ -83,11 +107,9 @@ export default function Home() {
           <span className="text-blue-600">belajar di SpeakBuddy?</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
-          <div
-            className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer"
-          >
+          <div className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer">
             <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div 
+            <div
               className="absolute inset-0 opacity-100 group-hover:opacity-31 transition-opacity duration-300"
               style={{
                 backgroundImage: `url(/BgHomebawah.svg)`,
@@ -102,12 +124,10 @@ export default function Home() {
               </h3>
             </div>
           </div>
-          
-          <div
-            className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer"
-          >
+
+          <div className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer">
             <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div 
+            <div
               className="absolute inset-0 opacity-100 group-hover:opacity-31 transition-opacity duration-300"
               style={{
                 backgroundImage: `url(/BgHomebawah.svg)`,
@@ -122,12 +142,10 @@ export default function Home() {
               </h3>
             </div>
           </div>
-          
-          <div
-            className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer"
-          >
+
+          <div className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer">
             <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div 
+            <div
               className="absolute inset-0 opacity-100 group-hover:opacity-31 transition-opacity duration-300"
               style={{
                 backgroundImage: `url(/BgHomebawah.svg)`,
@@ -142,12 +160,10 @@ export default function Home() {
               </h3>
             </div>
           </div>
-          
-          <div
-            className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer"
-          >
+
+          <div className="group rounded-3xl border border-gray-300 bg-gray-50 p-8 shadow-sm relative overflow-hidden transition-all duration-300 cursor-pointer">
             <div className="absolute inset-0 bg-[#096CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div 
+            <div
               className="absolute inset-0 opacity-100 group-hover:opacity-31 transition-opacity duration-300"
               style={{
                 backgroundImage: `url(/BgHomebawah.svg)`,

@@ -21,16 +21,19 @@ export default function ProfileEdit() {
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
-      <div className="grid grid-cols-2 
-            lg:grid-cols-4 gap-6">
-        <aside className="space-y-4">
+      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
+        <aside className="w-full lg:w-[280px] shrink-0">
           <div className="rounded-2xl bg-[#096CF6] text-white p-6 shadow-sm relative overflow-hidden bg-[url('/BgProfile1.svg')] bg-cover bg-right bg-no-repeat">
-              <img src="/LogoSpeakBuddy.svg" className="h-[0.895rem] w-auto mb-2" alt="SpeakBuddy" />
+            <img
+              src="/LogoSpeakBuddy.svg"
+              className="h-[0.895rem] w-auto mb-2"
+              alt="SpeakBuddy"
+            />
             <p className="text-xl font-bold">Pusat Akun</p>
           </div>
         </aside>
 
-        <section className="lg:col-span-3 space-y-5">
+        <section className="flex-1 space-y-4 sm:space-y-5">
           <div
             onClick={() => router.back()}
             className="flex items-center gap-2 text-lg font-bold text-black cursor-pointer hover:text-blue-600 transition-colors"
@@ -85,9 +88,8 @@ export default function ProfileEdit() {
                   <input
                     type="date"
                     className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-             
                   />
-                  
+
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="absolute right-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400 pointer-events-none"

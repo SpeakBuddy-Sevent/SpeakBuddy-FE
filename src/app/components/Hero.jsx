@@ -1,4 +1,24 @@
+
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
 export const Hero = () => {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // Sesuaikan nama token kamu
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleStart = () => {
+    if (isLoggedIn) {
+      router.push("/latihan-bicara");
+    } else {
+      router.push("/auth");
+    }
+  };
+
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-[#096CF6] to-[#096CF6]">
       {/* Background dengan ilustrasi playground */}
@@ -16,10 +36,10 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.05)_0%,transparent_50%)]"></div>
 
       {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 text-center">
         <h1
-            className="text-7xl md:text-8xl lg:text-9xl xl:text-[5rem] 2xl:text-[5rem] font-extrabold text-white mb-6 leading-tight"
-          style={{ textShadow: "1px 1px 8px rgba(0,0,0,0.3)"}}
+          className="text-7xl md:text-8xl lg:text-9xl xl:text-[5rem] 2xl:text-[5rem] font-extrabold text-white mb-6 leading-tight"
+          style={{ textShadow: "1px 1px 8px rgba(0,0,0,0.3)" }}
         >
           Temani Setiap <span className="text-[#FECB08]">Kata</span>
           <br />
@@ -31,9 +51,11 @@ export const Hero = () => {
           permainan, suara, dan interaksi menyenangkan.
         </p>
 
-        <button className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-gray-800 bg-white rounded-full hover:bg-gray-50 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+         <button
+          onClick={handleStart}
+          className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-gray-800 bg-white rounded-full hover:bg-gray-50 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+        >
           Mulai Sekarang
-          {/* Circle Kuning */}
           <span className="ml-3 w-9 h-9 rounded-full bg-[#FECB08] flex items-center justify-center">
             <svg className="w-7 h-6" fill="white" viewBox="0 0 20 20">
               <path
