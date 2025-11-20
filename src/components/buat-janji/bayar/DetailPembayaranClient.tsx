@@ -65,6 +65,8 @@ export default function DetailPembayaran() {
               src="/LogoSpeakBuddy.svg"
               className="h-3 sm:h-[0.895rem] w-auto mb-2"
               alt="SpeakBuddy"
+              width={150}
+              height={50}
               
             />
             <p className="text-lg sm:text-xl font-bold">Konsultasi</p>
