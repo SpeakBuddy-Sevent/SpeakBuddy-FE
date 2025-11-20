@@ -161,6 +161,8 @@ export default function PracticeClient({ level }: { level: string }) {
             src="/LogoSpeakBuddy1.svg"
             className="h-6 sm:h-7 w-auto"
             alt="logo"
+            width={150}
+            height={50}
           />
           <span className="text-xs sm:text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full font-medium">
             Soal: {currentItem.item_number}

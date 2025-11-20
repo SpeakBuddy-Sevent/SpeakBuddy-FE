@@ -20,8 +20,8 @@ export default function HomeKonsul() {
     // error 
   } = useChatList();
   
-  const handleChatClick = (chatId: number, name: string) => {
-    router.push(`/konsultasi/chat/${chatId}`);
+  const handleChatClick = (chatID: number, name: string) => {
+    router.push(`/konsultasi/chat/${chatID}`);
   };
 
   console.log("chatList =", chatList);
@@ -61,7 +61,7 @@ export default function HomeKonsul() {
                   Buat Janji
                 </a>
                 <a
-                  href="/konsultasi/Riwayat-Chat"
+                  href="/konsultasi/chat"
                   className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-blue-600 font-medium bg-blue-50 transition-all duration-200 text-sm sm:text-base"
                 >
                   <svg
