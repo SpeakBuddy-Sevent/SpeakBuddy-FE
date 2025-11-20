@@ -1,6 +1,7 @@
 "use client";
 //import Link from "next/link";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import useConsultation from "@/hooks/useConsultation";
 import useChat from "@/hooks/useChat";
@@ -60,10 +61,11 @@ export default function DetailPembayaran() {
       <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
         <aside className="w-full lg:w-[280px] shrink-0">
           <div className="rounded-2xl bg-[#096CF6] text-white p-4 sm:p-6 shadow-sm relative overflow-hidden bg-[url('/BgProfile1.svg')] bg-cover bg-right bg-no-repeat">
-            <img
+            <Image
               src="/LogoSpeakBuddy.svg"
               className="h-3 sm:h-[0.895rem] w-auto mb-2"
               alt="SpeakBuddy"
+              
             />
             <p className="text-lg sm:text-xl font-bold">Konsultasi</p>
           </div>
