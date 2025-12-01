@@ -9,10 +9,11 @@ export default function Home() {
   return (
     <>
       {/* <PreTest /> */}
-      {/* <Dashboard /> */}
+
+      <Dashboard />
       {/* <Pretest />
       <EditProfile /> */}
-      <Profile />
+      {/* <Profile /> */}
     {/* <Konsultasi /> */}
     </>
   );

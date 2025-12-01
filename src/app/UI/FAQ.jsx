@@ -50,8 +50,13 @@ export default function FAQ() {
 
     return (
       <section className="mx-auto max-w-7xl py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#096CF6] rounded-[25px] sm:rounded-[35px] md:rounded-[45px] grid grid-cols-1 md:grid-cols-[3fr_2fr] items-center overflow-hidden bg-[url('/BGFAQ.svg')] bg-no-repeat bg-right-bottom bg-contain w-full max-w-none">
-          <div className="p-6 sm:p-8 md:p-10 lg:pl-20 text-white max-w-full text-left">
+        <div className="bg-[#096CF6] rounded-[25px] sm:rounded-[35px] md:rounded-[45px] grid grid-cols-1 md:grid-cols-[3fr_2fr] items-center overflow-hidden relative w-full max-w-none">
+          <img 
+            src="/BGFAQ.svg" 
+            alt="" 
+            className="absolute right-0 bottom-0 w-auto  object-contain pointer-events-none"
+          />
+          <div className="p-6 sm:p-8 md:p-10 lg:pl-20 text-white max-w-full text-left relative z-10">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] max-w-full font-bold leading-tight">
               Setiap anak berhak berkembang sesuai potensinya
             </h2>
@@ -101,7 +106,7 @@ export default function FAQ() {
                     {item.q}
                   </span>
                   <svg
-                    className={`h-5 w-5 flex-shrink-0 text-black transition-transform duration-300 ${
+                    className={`h-5 w-5 shrink-0 text-black transition-transform duration-300 ${
                       open ? "rotate-180" : ""
                     }`}
                     viewBox="0 0 24 24"
