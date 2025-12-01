@@ -49,7 +49,7 @@ export default function Login() {
               value={email}
               onChange={e => setEmail(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-700 focus:outline-none focus:border-blue-500"
-              placeholder="ayulestari@gmail.com"
+              placeholder="Masukkan Email Anda"
               required
             />
           </div>
