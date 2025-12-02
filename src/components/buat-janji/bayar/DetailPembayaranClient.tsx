@@ -1,18 +1,73 @@
 "use client";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+//import Link from "next/link";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import useConsultation from "@/hooks/useConsultation";
+import useChat from "@/hooks/useChat";
+import useStartChat from "@/hooks/useStartChat";
 
-export default function DetaiPembayaran() {
+export default function DetailPembayaran() {
+  const params = useSearchParams();
   const router = useRouter();
+  
+  const { bookConsultation, loading } = useConsultation();
+  const { startChat } = useStartChat();
+
+  const [chatID, setChatID] = useState<string | null>(null);
+  const chat = useChat(chatID || undefined);
+
+      useEffect(() => {
+        if (!chatID) return;
+
+        const sendInitialMessage = async () => {
+          await chat.sendMessage(
+            `Halo kak, saya sudah melakukan pembayaran konsultasi untuk:\n
+    Nama anak: ${params.get("childName")}
+    Tanggal: ${params.get("date")}
+    Jam: ${params.get("slot")}
+
+    Terima kasih 🙏`
+          );
+
+          router.push(`/konsultasi/chat/${chatID}`);
+        };
+
+        sendInitialMessage();
+      }, [chatID]);
+
+  const handlePay = async () => {
+    await bookConsultation({
+      userId: Number(params.get("userId")),          
+      therapistUserId: Number(params.get("therapistId")),
+
+      childName: params.get("childName") || "",
+      childSex: params.get("childSex") || "",
+      childAge: Number(params.get("childAge")) || 0,
+
+      date: params.get("date") || "",
+      timeSlot: params.get("slot") || "",
+
+      isPaid: true,
+    });
+
+    const chatData = await startChat(params.get("therapistId")!);
+    setChatID(chatData.chatID);
+  }
+
+  // console.log({ slot, date, therapistId, childName, childSex, childAge });
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-10">
       <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
         <aside className="w-full lg:w-[280px] shrink-0">
           <div className="rounded-2xl bg-[#096CF6] text-white p-4 sm:p-6 shadow-sm relative overflow-hidden bg-[url('/BgProfile1.svg')] bg-cover bg-right bg-no-repeat">
-            <img
+            <Image
               src="/LogoSpeakBuddy.svg"
               className="h-3 sm:h-[0.895rem] w-auto mb-2"
               alt="SpeakBuddy"
+              width={150}
+              height={50}
+              
             />
             <p className="text-lg sm:text-xl font-bold">Konsultasi</p>
           </div>
@@ -94,12 +149,18 @@ export default function DetaiPembayaran() {
                   Pilih Metode
                 </div>
                 <div className="relative">
-                  <input
-                  
-                    type="date"
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus:border-blue-500"
-                  />
-                  <span className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  <select
+                    defaultValue=""
+                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus:border-blue-500 appearance-none"
+                  >
+                    <option value="" disabled>
+                      Pilih metode pembayaran
+                    </option>
+                    <option value="bank">Bank Transfer</option>
+                    <option value="qris">QRIS</option>
+                  </select>
+
+                  <span className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
                     <svg
                       width="18"
                       height="18"
@@ -108,17 +169,21 @@ export default function DetaiPembayaran() {
                       stroke="currentColor"
                       strokeWidth="2"
                     >
-                      <rect x="3" y="4" width="18" height="18" rx="2" />
-                      <path d="M16 2v4M8 2v4M3 10h18" />
+                      <path d="M6 9l6 6 6-6" />
                     </svg>
                   </span>
                 </div>
+
               </div>
             </div>
           </div>
           <div className="mt-4">
-            <button className="w-full bg-[#096CF6] text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-semibold hover:bg-blue-700 transition-colors">
-              Bayar
+            <button
+              onClick={handlePay}
+              disabled={loading}
+              className="bg-[#096CF6] text-white w-full py-4 rounded-xl"
+            >
+              {loading ? "Memproses..." : "Bayar"}
             </button>
           </div>
         </section>

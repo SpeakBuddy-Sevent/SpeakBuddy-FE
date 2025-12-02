@@ -3,6 +3,8 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -24,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${plusJakarta.variable} font-sans antialiased`}>  
         <Navbar/>
           {children}
+          <ToastContainer position="top-center" />
         <Footer/>
       </body>
     </html>
