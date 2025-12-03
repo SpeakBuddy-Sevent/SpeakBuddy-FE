@@ -25,7 +25,7 @@ export default function useLogin() {
 
       localStorage.setItem("token", res.data.token);
 
-      router.push("/");
+      localStorage.setItem("user_id", String(res.data.id));
 
       return res.data;
     } catch (err: any) {

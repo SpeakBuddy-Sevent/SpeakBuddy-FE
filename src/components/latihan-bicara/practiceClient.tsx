@@ -152,6 +152,14 @@ export default function PracticeClient({ level }: { level: string }) {
 
   //if (!currentItem) return null;
 
+  const speak = (text: string) => {
+    if (!text) return;
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "id-ID";
+    speechSynthesis.speak(utter);
+  };
+
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
       {/* header */}
@@ -174,9 +182,31 @@ export default function PracticeClient({ level }: { level: string }) {
         {/* Word Card */}
         <div className="bg-white rounded-3xl shadow-lg p-8 border mb-8">
           <div className="text-center">
-            <h1 className="text-6xl font-extrabold text-gray-800 mb-4">
-              {currentItem.target_text}
-            </h1>
+            <div className="flex flex-col items-center gap-3">
+              <h1 className="text-6xl font-extrabold text-gray-800">
+                {currentItem.target_text}
+              </h1>
+
+              <button
+                onClick={() => speak(currentItem.target_text)}
+                className="mt-4 h-20 w-20 sm:h-20 sm:w-20 rounded-full bg-blue-100 hover:bg-blue-200 
+                          text-blue-600 flex items-center justify-center transition-all 
+                          duration-200 hover:scale-110"
+              >
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -268,10 +298,35 @@ export default function PracticeClient({ level }: { level: string }) {
                     Hasil Analisis
                   </h3>
 
-                  <p className="text-gray-700">
-                    {attemptResult?.feedback ??
-                      `Kamu sudah mencoba mengucapkan "${currentItem.target_text}". Terus berlatih ya!`}
-                  </p>
+                  <div className="flex flex-col gap-3">
+                    <p className="text-gray-700">
+                      {attemptResult?.feedback ??
+                        `Kamu sudah mencoba mengucapkan "${currentItem.target_text}". Terus berlatih ya!`}
+                    </p>
+
+                    {attemptResult?.feedback && (
+                      <button
+                        onClick={() => speak(attemptResult.feedback)}
+                        className="mt-4 h-20 w-20 sm:h-20 sm:w-20 rounded-full bg-blue-100 hover:bg-blue-200 
+                                  text-blue-600 flex items-center justify-center transition-all 
+                                  duration-200 hover:scale-110"
+                      >
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+
                 </div>
 
                 {/* Score */}
