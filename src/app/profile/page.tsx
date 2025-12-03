@@ -21,7 +21,7 @@ export default function Profile() {
     try {
       localStorage.removeItem("token");
 
-
+      router.refresh();
       router.push("/auth");
     } catch (err) {
       console.error("Logout error:", err);
@@ -59,9 +59,9 @@ export default function Profile() {
                   height="24"
                   viewBox="0 0 24 24"
                 >
-                  <g fill="none" stroke="currentColor" stroke-width="1.5">
+                  <g fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path
-                      stroke-linejoin="round"
+                      strokeLinejoin="round"
                       d="M4 18a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"
                     />
                     <circle cx="12" cy="7" r="3" />
@@ -83,10 +83,10 @@ export default function Profile() {
                   height="24"
                   viewBox="0 0 24 24"
                 >
-                  <g fill="none" stroke="currentColor" stroke-width="1.5">
+                  <g fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M2.5 12c0-4.478 0-6.718 1.391-8.109S7.521 2.5 12 2.5c4.478 0 6.718 0 8.109 1.391S21.5 7.521 21.5 12c0 4.478 0 6.718-1.391 8.109S16.479 21.5 12 21.5c-4.478 0-6.718 0-8.109-1.391S2.5 16.479 2.5 12Z" />
                     <path
-                      stroke-linecap="round"
+                      strokeLinecap="round"
                       d="M11 7h6M7 7h1m-1 5h1m-1 5h1m3-5h6m-6 5h6"
                     />
                   </g>
