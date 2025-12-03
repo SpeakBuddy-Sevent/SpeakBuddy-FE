@@ -32,13 +32,13 @@ export default function useChat(chatID?: string) {
 
       // MAP FIELD BACKEND → FRONTEND
       const raw = res.data || [];
-      const mapped = raw.map((msg: any) => ({
-        id: msg._id,
-        chat_id: msg.chatId,
-        sender_id: msg.senderId,
-        text: msg.text,
-        timestamp: msg.timestamp
-      }));
+    const mapped = raw.map((msg: any) => ({
+      id: msg.id,
+      chat_id: msg.chat_id,
+      sender_id: msg.sender_id,
+      text: msg.text,
+      timestamp: msg.timestamp,
+    }));
 
       setMessages(mapped);
     } catch (err) {

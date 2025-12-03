@@ -25,6 +25,8 @@ export default function useLogin() {
 
       localStorage.setItem("token", res.data.token);
 
+      localStorage.setItem("user_id", String(res.data.id));
+
       return res.data;
     } catch (err: any) {
       const msg = err.response?.data?.error || "Email atau password salah";

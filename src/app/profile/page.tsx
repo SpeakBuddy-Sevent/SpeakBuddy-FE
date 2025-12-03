@@ -20,6 +20,7 @@ export default function Profile() {
   const handleLogout = async () => {
     try {
       localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
 
       router.refresh();
       router.push("/auth");
