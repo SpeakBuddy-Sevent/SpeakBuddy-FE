@@ -152,6 +152,14 @@ export default function PracticeClient({ level }: { level: string }) {
 
   //if (!currentItem) return null;
 
+  const speak = (text: string) => {
+    if (!text) return;
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "id-ID";
+    speechSynthesis.speak(utter);
+  };
+
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
       {/* header */}
@@ -174,9 +182,18 @@ export default function PracticeClient({ level }: { level: string }) {
         {/* Word Card */}
         <div className="bg-white rounded-3xl shadow-lg p-8 border mb-8">
           <div className="text-center">
-            <h1 className="text-6xl font-extrabold text-gray-800 mb-4">
-              {currentItem.target_text}
-            </h1>
+            <div className="flex flex-col items-center gap-3">
+              <h1 className="text-6xl font-extrabold text-gray-800">
+                {currentItem.target_text}
+              </h1>
+
+              <button
+                onClick={() => speak(currentItem.target_text)}
+                className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold"
+              >
+                Dengarkan
+              </button>
+            </div>
           </div>
         </div>
 
@@ -268,10 +285,22 @@ export default function PracticeClient({ level }: { level: string }) {
                     Hasil Analisis
                   </h3>
 
-                  <p className="text-gray-700">
-                    {attemptResult?.feedback ??
-                      `Kamu sudah mencoba mengucapkan "${currentItem.target_text}". Terus berlatih ya!`}
-                  </p>
+                  <div className="flex flex-col gap-3">
+                    <p className="text-gray-700">
+                      {attemptResult?.feedback ??
+                        `Kamu sudah mencoba mengucapkan "${currentItem.target_text}". Terus berlatih ya!`}
+                    </p>
+
+                    {attemptResult?.feedback && (
+                      <button
+                        onClick={() => speak(attemptResult.feedback)}
+                        className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold w-fit"
+                      >
+                        Dengarkan Feedback
+                      </button>
+                    )}
+                  </div>
+
                 </div>
 
                 {/* Score */}

@@ -4,10 +4,6 @@ export default function Home() {
   return (
     <>
       <Dashboard />
-      {/* <Pretest />
-      <EditProfile /> */}
-      {/* <Profile /> */}
-    {/* <Konsultasi /> */}
     </>
   );
 }

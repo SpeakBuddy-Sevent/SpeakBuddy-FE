@@ -25,8 +25,6 @@ export default function useLogin() {
 
       localStorage.setItem("token", res.data.token);
 
-      router.push("/");
-
       return res.data;
     } catch (err: any) {
       const msg = err.response?.data?.error || "Email atau password salah";
