@@ -20,6 +20,7 @@ export default function Profile() {
   const handleLogout = async () => {
     try {
       localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
 
       router.refresh();
       router.push("/auth");
@@ -93,28 +94,29 @@ export default function Profile() {
                 </svg>
                 Data Anak
               </button>
-            </nav>
-            <button
-              onClick={handleLogout}
-              className="flex w-full text-left items-center gap-3 px-4 py-3 rounded-lg font-medium text-red-600 hover:bg-red-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+              <button
+                onClick={handleLogout}
+                className="flex w-full text-left items-center gap-3 px-4 py-3 rounded-lg font-medium text-red-600 hover:bg-red-50"
               >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 17l5-5m0 0l-5-5m5 5H9m4 8H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7"
-                />
-              </svg>
-              Logout
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 17l5-5m0 0l-5-5m5 5H9m4 8H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7"
+                  />
+                </svg>
+                Logout
+              </button>
+            </nav>
+            
 
           </div>
         </aside>
@@ -149,10 +151,10 @@ export default function Profile() {
                     <div className="text-black font-medium">{data?.email}</div>
 
                     <div className="text-gray-500">Umur</div>
-                    <div className="text-gray-400">{data?.age ?? "Isi tanggal lahirmu"}</div>
+                    <div className="text-black font-medium">{data?.age ?? "Isi tanggal lahirmu"}</div>
 
                     <div className="text-gray-500">Jenis Kelamin</div>
-                    <div className="text-gray-400">{data?.sex ?? "Pilih jenis kelaminmu"}</div>
+                    <div className="text-black font-medium">{data?.sex ?? "Pilih jenis kelaminmu"}</div>
                   </div>
                 </div>
               </div>
