@@ -189,9 +189,22 @@ export default function PracticeClient({ level }: { level: string }) {
 
               <button
                 onClick={() => speak(currentItem.target_text)}
-                className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold"
+                className="mt-4 h-20 w-20 sm:h-20 sm:w-20 rounded-full bg-blue-100 hover:bg-blue-200 
+                          text-blue-600 flex items-center justify-center transition-all 
+                          duration-200 hover:scale-110"
               >
-                Dengarkan
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                </svg>
               </button>
             </div>
           </div>
@@ -294,9 +307,22 @@ export default function PracticeClient({ level }: { level: string }) {
                     {attemptResult?.feedback && (
                       <button
                         onClick={() => speak(attemptResult.feedback)}
-                        className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold w-fit"
+                        className="mt-4 h-20 w-20 sm:h-20 sm:w-20 rounded-full bg-blue-100 hover:bg-blue-200 
+                                  text-blue-600 flex items-center justify-center transition-all 
+                                  duration-200 hover:scale-110"
                       >
-                        Dengarkan Feedback
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                        </svg>
                       </button>
                     )}
                   </div>
