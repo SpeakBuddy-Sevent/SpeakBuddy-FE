@@ -135,7 +135,9 @@ export default function HomeKonsul() {
                 className="rounded-2xl border border-gray-200 bg-white shadow-sm p-5 flex items-center gap-4"
               >
                 <div className="flex items-center gap-4 flex-1">
-                  <div className="h-20 w-20 rounded-full bg-gray-200"></div>
+                    <div className="h-20 w-20 rounded-full bg-gray-200 flex items-center justify-center text-3xl font-bold text-gray-700">
+                      {t.name.charAt(0).toUpperCase()}
+                    </div>
 
                   <div className="flex-1">
                     <p className="font-semibold text-gray-900">{t.name}</p>
