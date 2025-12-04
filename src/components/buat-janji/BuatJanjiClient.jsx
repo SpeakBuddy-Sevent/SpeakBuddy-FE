@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";;
+import { useRouter, useSearchParams } from "next/navigation";
 import useDataAnak from "@/hooks/useDataAnak";
 
 export default function BuatJanji() {
@@ -113,10 +113,11 @@ export default function BuatJanji() {
               <div>
                 <div className="text-black font-bold mb-3">Jenis Kelamin</div>
                 <div className="relative">
-                  <select 
+                  <select
                     value={childSex}
                     onChange={(e) => setChildSex(e.target.value)}
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 appearance-none cursor-pointer">
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 appearance-none cursor-pointer"
+                  >
                     <option value="">Pilih Jenis Kelamin</option>
                     <option value="perempuan">Perempuan</option>
                     <option value="laki">Laki-laki</option>
@@ -155,10 +156,10 @@ export default function BuatJanji() {
                     type="date"
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-700"
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-700 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:left-0 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                   />
 
-                  <span className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
                     <svg
                       width="18"
                       height="18"
@@ -198,22 +199,22 @@ export default function BuatJanji() {
             </div>
           </div>
           <div className="mt-4 w-full">
-          <Link
-            href={{
-              pathname: "/konsultasi/BuatJanji/Bayar",
-              query: {
-                childName,
-                childSex,
-                childAge,
-                slot: selectedSlot,
-                date: selectedDate,
-                therapistId: therapistUserID,
-              },
-            }}
-            className="block w-full bg-[#096CF6] text-white px-6 py-4 rounded-xl text-xl font-semibold text-center"
-          >
-            Selanjutnya
-          </Link>
+            <Link
+              href={{
+                pathname: "/konsultasi/BuatJanji/Bayar",
+                query: {
+                  childName,
+                  childSex,
+                  childAge,
+                  slot: selectedSlot,
+                  date: selectedDate,
+                  therapistId: therapistUserID,
+                },
+              }}
+              className="block w-full bg-[#096CF6] text-white px-6 py-4 rounded-xl text-xl font-semibold text-center"
+            >
+              Selanjutnya
+            </Link>
           </div>
         </section>
       </div>
