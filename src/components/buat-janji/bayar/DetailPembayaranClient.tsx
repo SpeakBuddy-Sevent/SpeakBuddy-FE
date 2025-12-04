@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import useConsultation from "@/hooks/useConsultation";
 import useChat from "@/hooks/useChat";
 import useStartChat from "@/hooks/useStartChat";
+import useTherapists from "@/hooks/useTherapists";
 
 export default function DetailPembayaran() {
   const params = useSearchParams();
@@ -55,6 +56,10 @@ export default function DetailPembayaran() {
     setChatID(chatData.chatID);
   }
 
+  const therapistId = Number(params.get("therapistId"));
+  const { therapists } = useTherapists();
+  const therapist = therapists.find((t) => t.id === therapistId);
+
   // console.log({ slot, date, therapistId, childName, childSex, childAge });
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-10">
@@ -100,7 +105,7 @@ export default function DetailPembayaran() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-3">
                   <p className="font-semibold text-black truncate mt-2">
-                    Claudia Intan Permata, A.Md.TW
+                    {therapist ? therapist.name : "Terapis"}
                   </p>
                 </div>
                 <p className="text-sm text-gray-600 truncate mt-2">
